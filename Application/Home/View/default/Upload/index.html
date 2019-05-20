@@ -1,0 +1,48 @@
+<extend name="Public/tmp" />
+
+
+<block name="content">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-10 control-label">图片</label>
+                        <div class="row pl-2 pr-2">
+                            <div class="col-sm-5">
+                                <input type="file" class="form-control" id="imageurl" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$imageurl = $('#imageurl');
+$imageurl.change(function () {
+    var file = $imageurl[0].files[0];
+    var formData = new FormData();
+    formData.append($imageurl.attr("name"),file);
+
+    $.ajax({
+        url:'/upload/uploadImg',
+        type:"POST",
+        data:formData,
+        dataType:"json",
+        success:function (res) {
+            console.log(res);
+        },
+        error:function (err) {
+            console.log(err);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+});
+</script>
+</block>
