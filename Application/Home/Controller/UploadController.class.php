@@ -97,4 +97,38 @@ class UploadController extends Controller
         }
         return null;
     }
+
+    public function encode_img()
+    {
+        $img = "/Uploads/platform/5cde6c326e9ce.png";
+        $img1 = "{$_SERVER['DOCUMENT_ROOT']}{$img}";
+        $image_info = getimagesize($img1);
+        $res = fopen($img1,'r');
+        $img_data = fread($res,filesize($img1));
+        $img_data_chunk = chunk_split(base64_encode($img_data));
+        $img_data_base64 = "data:".$image_info['mime'].";base64,".$img_data_chunk;
+        $filename = "{$_SERVER['DOCUMENT_ROOT']}/Uploads/platform/5cde6c326e9ce";
+        $res1 = fopen($filename,'w');
+        fwrite($res1,$img_data_base64);
+        fclose($res);
+        fclose($res1);
+    }
+
+    public function decode_img()
+    {
+        $file = "/Uploads/platform/5cde6c326e9ce";
+        $file1 = "{$_SERVER['DOCUMENT_ROOT']}{$file}";
+        $res = fopen($file1,'r');
+        $origin_data = fread($res,filesize($file1));
+        $origin_data_arr = explode(',',$origin_data);
+        $encode_data = $origin_data_arr[1];
+        $img_data = base64_decode($encode_data);
+        $img = "/Uploads/platform/5cde6c326e9ce_1.png";
+        $img1 = "{$_SERVER['DOCUMENT_ROOT']}{$img}";
+        $res1 = fopen($img1,'w');
+        $int = fwrite($res1,$img_data);
+        echo $int;
+        fclose($res);
+        fclose($res1);
+    }
 }
