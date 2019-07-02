@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>管理后台 - </title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/Public/cpts/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/datepicker/datepicker3.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/timepicker/bootstrap-timepicker.min.css">
+  <!-- Bootstrap datatime Picker -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/datatimepicker/css/bootstrap-datetimepicker.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/Public/cpts/plugins/iCheck/all.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand border-bottom navbar-dark bg-primary">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/admin/passport/logout" class="nav-link">退出</a>
+      </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </nav>
+  <!-- /.navbar -->
+<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <!-- <img src="/Public/cpts/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
+      <span class="brand-text font-weight-light">管理后台</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="/Public/cpts/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">super(超级管理员)</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2"><ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"><li class="nav-item"><a href="/admin/home/index" class="nav-link "><i class="nav-icon fa fa-home text-danger"></i><p class="text">主页面</p></a></li><li class="nav-item has-treeview menu-open"><a href="javascript:;" class="nav-link active"><i class="nav-icon fa fa-th"></i><p>系统管理<i class="right fa fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/admin/adminUser/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>用户管理</p></a></li><li class="nav-item"><a href="/admin/adminRole/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>角色管理</p></a></li><li class="nav-item"><a href="/admin/adminMenu/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>菜单管理</p></a></li><li class="nav-item"><a href="/admin/adminConfig/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>查看配置</p></a></li><li class="nav-item"><a href="/admin/adminCli/index" class="nav-link active">
+                    <i class="fa fa-circle-o nav-icon"></i><p>配置CLI</p></a></li><li class="nav-item"><a href="/admin/RMQWarning/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>系统预警</p></a></li><li class="nav-item"><a href="/admin/WarningRtpList/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>收支\回报率</p></a></li><li class="nav-item"><a href="/admin/WarningSingleAwardList/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>单次获奖</p></a></li><li class="nav-item"><a href="/admin/WarningRtpList/config" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>回报率设置</p></a></li><li class="nav-item"><a href="/admin/warningSingleAwardList/config" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>单次获奖设置</p></a></li><li class="nav-item"><a href="/admin/WarningPF/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>平台预警</p></a></li></ul></li><li class="nav-item has-treeview "><a href="javascript:;" class="nav-link "><i class="nav-icon fa fa-th"></i><p>运营管理<i class="right fa fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/admin/whiteList/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>白名单</p></a></li><li class="nav-item"><a href="/admin/user/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>玩家管理</p></a></li><li class="nav-item"><a href="/admin/gameType/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>游戏分类管理</p></a></li><li class="nav-item"><a href="/admin/game/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>游戏管理</p></a></li><li class="nav-item"><a href="/admin/adminOperatorLog/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>操作日志</p></a></li><li class="nav-item"><a href="/admin/report/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>盈亏流水</p></a></li><li class="nav-item"><a href="/admin/report/transit" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>转帐流水</p></a></li><li class="nav-item"><a href="/admin/adminMerchant/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>代理商管理</p></a></li><li class="nav-item"><a href="/admin/updatingList/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>游戏维护更新</p></a></li><li class="nav-item"><a href="/admin/whiteListTest/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>维护测试白名单</p></a></li></ul></li><li class="nav-item has-treeview "><a href="javascript:;" class="nav-link "><i class="nav-icon fa fa-th"></i><p>游戏记录<i class="right fa fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/admin/slotRecord/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>拉覇记录</p></a></li><li class="nav-item"><a href="/admin/slotRecord/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>拉覇回报率</p></a></li><li class="nav-item"><a href="/admin/cardRecord/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>棋牌记录</p></a></li><li class="nav-item"><a href="/admin/cardRecord/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>棋牌回报率</p></a></li><li class="nav-item"><a href="/admin/arcadeRecord/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>街机记录</p></a></li><li class="nav-item"><a href="/admin/arcadeRecord/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>街机回报率</p></a></li><li class="nav-item"><a href="/admin/huntingRecord/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>捕猎记录</p></a></li><li class="nav-item"><a href="/admin/huntingRecord/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>捕猎回报率</p></a></li></ul></li><li class="nav-item has-treeview "><a href="javascript:;" class="nav-link "><i class="nav-icon fa fa-th"></i><p>游戏统计<i class="right fa fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/admin/statSpin/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>拉覇统计</p></a></li><li class="nav-item"><a href="/admin/statCard/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>棋牌统计</p></a></li><li class="nav-item"><a href="/admin/statArcade/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>街机统计</p></a></li><li class="nav-item"><a href="/admin/statHunting/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>捕猎统计</p></a></li></ul></li><li class="nav-item has-treeview "><a href="javascript:;" class="nav-link "><i class="nav-icon fa fa-th"></i><p>数据分析<i class="right fa fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/admin/analyseSpin/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>拉覇回报率分析</p></a></li><li class="nav-item"><a href="/admin/analyseSpin/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>拉覇玩家排行分析</p></a></li><li class="nav-item"><a href="/admin/analyseOnline/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>在线时长分析</p></a></li><li class="nav-item"><a href="/admin/analyseRetain/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>留存分析</p></a></li><li class="nav-item"><a href="/admin/analyseRank/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>排行榜</p></a></li><li class="nav-item"><a href="/admin/livePay/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>付费分析</p></a></li><li class="nav-item"><a href="/admin/liveData/index" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>用户实时数据</p></a></li><li class="nav-item"><a href="/admin/analyseCard/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>棋牌回报率分析</p></a></li><li class="nav-item"><a href="/admin/AnalyseArcade/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>街机回报率分析</p></a></li><li class="nav-item"><a href="/admin/AnalyseHunting/rate" class="nav-link ">
+                    <i class="fa fa-circle-o nav-icon"></i><p>捕猎回报率分析</p></a></li></ul></li></ul></nav>      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+     
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h3>配置CLI</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item active">配置CLI</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+    	<div class="col-md-12">
+			<div class="card card-info">
+
+	          <div class="card-body">
+	            <div class="row">
+	              <div class="col-3">
+	                <div class="input-group">
+	                    <div class="input-group-prepend">
+	                      <span class="input-group-text">Cli说明</span>
+	                    </div>
+	                    <input id="sKeyWord" type="text" class="form-control" >
+	                </div>
+	              </div>
+	              <div class="col-2">
+	                <button type="submit" class="btn btn-primary " onclick="getPageList(1)">查询</button>
+	              </div>
+	            </div>
+	          </div>
+	          <!-- /.card-body -->
+	        </div>
+        </div>
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h3 class="card-title">列表</h3>
+            <div class="card-tools ">
+              <button type="button" class="btn btn-primary btn-sm" onclick="editRow(null)" title="添加" data-toggle="modal" data-target="#myModal">
+	            <i class="fa fa-plus"></i> 添加
+	          </button>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <table id="list" class="table table-bordered">
+            	<thead>
+            		<tr>
+		                <th>序号</th>
+		                <th>CLI命令</th>
+		                <th>CLI说明</th>
+		                <th>操作</th>
+		            </tr>
+            	</thead>
+            	<tbody></tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer clearfix">
+          	<div class="row" id="pager">
+          	</div>
+          </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">
+					编辑
+				</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+
+                <div class="form-group">
+                    <label class="col-sm-10 control-label">Cli命令*</label>
+                    <div class="col-sm-10">
+                      <input type="hidden" id="id" />
+                      <input type="text" class="form-control" id="cli_str" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-10 control-label">Cli说明*</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="cli_desc" />
+                    </div>
+                </div>
+
+                
+                <div class="col-sm-10" id="alertSave"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" id="btnClose" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" id="btnSave">保存</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+  </div>
+  <!-- /.content-wrapper 
+  <footer class="main-footer">
+    <strong>&nbsp;</strong>
+    
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 2.0
+    </div>
+  </footer>
+  -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/Public/cpts/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="/Public/cpts/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="/Public/cpts/plugins/morris/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/Public/cpts/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="/Public/cpts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Public/cpts/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/Public/cpts/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="/Public/cpts/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/Public/cpts/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- bootstrap time picker -->
+<script src="/Public/cpts/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- Bootstrap datatime Picker -->
+<script src="/Public/cpts/plugins/datatimepicker/js/bootstrap-datetimepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/Public/cpts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="/Public/cpts/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/Public/cpts/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/Public/cpts/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/Public/cpts/dist/js/pages/dashboard.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/Public/cpts/plugins/iCheck/icheck.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/Public/cpts/dist/js/demo.js"></script>
+
+<script type="text/javascript">
+
+function selectFirst($obj) {
+    $obj.each(function (i, j) {
+        $(j).find("option:selected").attr("selected", false);
+        $(j).find("option").first().attr("selected", true);
+    });
+}
+
+</script>
+
+<script type="text/javascript">
+var pageIndex=1;
+var pageSize=15;
+var $alertSave=$("#alertSave");
+var $btnClose=$("#btnClose");
+var $btnSave=$("#btnSave");
+var $pager=$("#pager");
+var $list=$("#list");
+var $tbody=$("#list tbody");
+//编辑
+var $id=$("#id");
+var $cli_str=$("#cli_str");
+var $cli_desc=$("#cli_desc");
+
+//查询
+var $sKeyWord=$("#sKeyWord");
+var alterSuccess=function(){
+	$alertSave.append('<div class="alert alert-success">保存成功</div>');
+	setTimeout("$alertSave.html('');getPageList(pageIndex);$btnClose.trigger('click');",1000);
+};
+var alterError=function($msg){
+	$alertSave.append('<div class="alert alert-danger">'+$msg+'</div>');
+	setTimeout("$alertSave.html('');",3000);
+};
+var save=function (){
+	var data={
+		'id':$id.val(),
+		'cmd_str':$cli_str.val(),
+		'cmd_desc':$cli_desc.val()
+	};
+    $.post("/admin/adminCli/save",data,function(res){
+    	res=eval("("+res+")");
+    	if(!res.ret)alterError(res.msg);
+    	else alterSuccess();
+	});
+};
+var editRow=function(id){
+	if(id==null){
+		$id.val('');
+        $cli_str.val('');
+        $cli_desc.val('');
+		return;
+	}
+	$.get("/admin/adminCli/get?id="+id,function(res){
+    	res=eval("("+res+")");
+    	if(!res.ret)return;
+    	$id.val(res.data.id);
+        $cli_str.val(res.data.cmd_str);
+        $cli_desc.val(res.data.cmd_desc);
+	});
+};
+var deleteRow=function(id,name){
+	if(!confirm("确认删除 "+ name +"?"))return;
+	$.get("/admin/adminCli/delete?id="+id,function(res){
+    	res=eval("("+res+")");
+        if(!res.ret){
+            alert(res.msg);
+            return;
+        }
+    	window.location.reload();
+	});
+};
+var rowTemp=function($row){
+	var arr=[
+		'<tr>',
+		'<td>',$row.asc_no,'</td>',
+		'<td>',$row.cmd_str,'</td>',
+		'<td>',$row.cmd_desc,'</td>',
+		'<td>',
+		'<button class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#myModal" onclick="editRow(',$row.id,')"> 编辑 </button>&nbsp;&nbsp;',
+		'<button class="btn btn-outline-danger btn-sm" onclick="deleteRow(',$row.id,',\'',$row.username,'\')"> 删除 </button>',
+		'</td>',
+		'</tr>'
+	];
+	return arr.join('');
+}
+var getPageList=function(page){
+	var data={
+		'page':page,
+		'pageSize':pageSize,
+        'keyWord':$sKeyWord.val(),
+	};
+	$.post("/admin/AdminCli/getList",data,function(res){
+    	res=eval("("+res+")");
+    	if(!res.ret)return;
+    	$tbody.empty();
+    	for(var i=0;i<res.data.list.length;i++){
+    		$tbody.append(rowTemp(res.data.list[i]));
+    	}
+    	$pager.html(res.data.pager);
+	});
+}
+$btnSave.click(save);
+getPageList(pageIndex);
+</script>
+
+</body>
+</html>
