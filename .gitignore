@@ -1,6 +1,8 @@
 #IDE:
 .idea
 
-
+#Application
 /Application/Runtime/
 
+#mac
+.DS_Store
