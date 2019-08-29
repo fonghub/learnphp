@@ -48,70 +48,7 @@ class ProcessController
         }
     }
 
-    /*
-     * 在程序从pcntl_fork()后父进程和子进程将各自继续往下执行代码
-     */
-    public function tst1()
-    {
-        $pid = pcntl_fork();
-        if ($pid > 0){
-            echo "parent pid={$pid}".PHP_EOL;
-        }elseif ($pid == 0){
-            echo "children pid={$pid}".PHP_EOL;
-        }else{
-            echo "fork error".PHP_EOL;
-        }
-    }
 
-    /*
-     * 子进程拥有父进程的数据副本，而并不是共享
-     */
-    public function tst2()
-    {
-        $number = 1;
-        $pid = pcntl_fork();
-        if ($pid > 0){
-            $number += 1;
-            echo "parent pid={$pid},number={$number}".PHP_EOL;
-        }elseif ($pid == 0){
-            $number += 2;
-            echo "children pid={$pid},number={$number}".PHP_EOL;
-        }else{
-            echo "fork error".PHP_EOL;
-        }
-    }
-
-    /*
-     * 显示了7次 “ children ”
-     */
-    public function tst3()
-    {
-        for ($i = 1;$i <= 3;$i++){
-            $pid = pcntl_fork();
-            if ($pid > 0){
-                echo "++++parent pid={$pid}".PHP_EOL;
-            }elseif ($pid == 0){
-                echo "----children pid={$pid}".PHP_EOL;
-            }
-        }
-    }
-
-
-    /*
-     * 显示了3次 “ children ”
-     */
-    public function tst4()
-    {
-        for ($i = 1;$i <= 3;$i++){
-            $pid = pcntl_fork();
-            if ($pid > 0){
-//                echo "++++parent pid={$pid}".PHP_EOL;
-            }elseif ($pid == 0){
-                echo "----children pid={$pid}".PHP_EOL;
-                exit;
-            }
-        }
-    }
 
 
     public function tst5()
