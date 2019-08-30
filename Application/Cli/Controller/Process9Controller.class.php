@@ -15,7 +15,7 @@ class Process9Controller
     public function index1()
     {
         $host = '0.0.0.0';
-        $port = 9998;
+        $port = 9990;
         // 创建一个tcp socket
         $listen_socket = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
         // 将socket bind到IP：port上
@@ -33,7 +33,7 @@ class Process9Controller
             // 所以你不用担心while循环会将机器拖垮，不会的
             $connection_socket = socket_accept( $listen_socket );
             // 向客户端发送一个helloworld
-            $msg = "helloworld\r\n";
+            $msg = "hello world\r\n";
             socket_write( $connection_socket, $msg, strlen( $msg ) );
             socket_close( $connection_socket );
         }
