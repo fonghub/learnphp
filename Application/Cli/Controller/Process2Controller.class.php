@@ -45,6 +45,26 @@ class Process2Controller
     }
 
     /*
+     *子进程分别拥有父进程的数据副本，不共享
+     */
+    public function index22()
+    {
+        $number = 1;
+        for ($i = 1;$i <= 3;$i++){
+            $pid = pcntl_fork();
+            if ($pid < 0){
+                exit('fork error');
+            }elseif ($pid == 0){
+                $number += 10;
+                exit("children process running,number={$number}".PHP_EOL);
+            }else{
+//                $number += 1;
+//                echo "parent process running,number={$number}".PHP_EOL;
+            }
+        }
+    }
+
+    /*
      * 显示了7次 “ children ”
      */
     public function index3()
