@@ -2,6 +2,9 @@
 
 namespace Task\Bll\DataStructure;
 
+/*
+ * https://github.com/elarity/data-structure-php-clanguage/blob/master/1.%E6%8E%92%E5%BA%8F%E7%AF%87%E4%B9%8B%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.md
+ */
 class Bubble
 {
 

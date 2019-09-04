@@ -5,6 +5,7 @@ namespace Cli\Controller;
 
 
 use Task\Bll\DataStructure\Bubble;
+use Task\Bll\DataStructure\Select;
 use Think\Controller;
 
 class DataStructureController extends Controller
@@ -15,7 +16,8 @@ class DataStructureController extends Controller
 
     public function __construct()
     {
-        $this->arr = [6,4,3,5,0,7,2,9,8,1];
+        $this->arr = [6,4,7,2,9,8,1];
+        echo "第0轮排序：".json_encode($this->arr)."\n";
     }
 
     public function index()
@@ -28,7 +30,12 @@ class DataStructureController extends Controller
      */
     public function bubble()
     {
-        $this->res = Bubble::index($this->arr);
+        $this->res = Bubble::index1($this->arr);
+    }
+
+    public function select()
+    {
+        $this->res = Select::index($this->arr);
     }
 
 
