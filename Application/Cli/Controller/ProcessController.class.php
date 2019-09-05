@@ -4,90 +4,68 @@
 namespace Cli\Controller;
 
 
-use Think\Log;
+use Task\Bll\Process\Process1;
+use Task\Bll\Process\Process11;
+use Task\Bll\Process\Process12;
+use Task\Bll\Process\Process2;
+use Task\Bll\Process\Process3;
+use Task\Bll\Process\Process4;
+use Task\Bll\Process\Process6;
+use Task\Bll\Process\Process8;
+use Task\Bll\Process\Process9;
+use Task\Bll\Process\ProcessTst;
 
 class ProcessController
 {
 
-    public function getContent()
+    public function p1_index()
     {
-        echo "\n".'--------start--------'."\n";
-        while (true) {
-            $str = 'getContent-'.date('Y-m-d H:i:s')."\n";
-            Log::write($str);
-            sleep(3);
-        }
+        Process1::index();
     }
 
-    public function third_way()
+    public function p2_index()
     {
-        echo "\n".'--------start--------'."\n";
-        // $pid = pcntl_fork();
-        // if ($pid < 0){
-        //     exit('fork error.i='.$pid."\n");
-        // }elseif ($pid > 0){
-        //     exit('parent process.i='.$pid."\n");
-        // }
-
-        // if (!posix_setsid()){
-        //     exit('setsid error.');
-        // }
-
-        // $pid = pcntl_fork();
-        // if ($pid < 0){
-        //     exit('fork error.i='.$pid."\n");
-        // }elseif ($pid > 0){
-        //     exit('parent process.i='.$pid."\n");
-        // }
-
-        $i = 1;
-        while (true) {
-            Log::write($i);
-            sleep(1);
-            $i++;
-        }
+        Process2::index1();
     }
 
-
-
-
-    public function tst5()
+    public function p3_index()
     {
-        $pid = pcntl_fork();
-        if ($pid > 0){
-//            pcntl_wait($pid);
-            // echo "++++children pid={$pid}".PHP_EOL;
-            Log::write("++++children pid={$pid}");
-        }elseif ($pid == 0){
-//            echo "----children pid={$pid}".PHP_EOL;
-//            exit;
-        }
+        Process3::index1();
     }
 
-    public function tst7()
+    public function p4_index()
     {
-        $ppid = getmypid();
-        Log::write('tst6,ppid='.$ppid);
-        
-        $pid = pcntl_fork();
-        // sleep(5);
-        if ($pid > 0){
-            Log::write("++++children pid={$pid}");
-        }elseif ($pid == 0){
-           Log::write("----children process running");
-        }
+        Process4::index1();
     }
 
-    public function tst33()
+    public function p6_index()
     {
-        for ($i = 1;$i <= 3;$i++){
-            $ppid = getmypid();
-            $pid = pcntl_fork();
-            if ($pid > 0){
-                Log::write("parent process,current process id=".$ppid);
-            }elseif ($pid == 0){
-                Log::write("children process,current process id=".$pid.",parent process id=".$ppid);
-            }
-        }
+        Process6::index1();
     }
+
+    public function p8_index()
+    {
+        Process8::index1();
+    }
+
+    public function p9_index()
+    {
+        Process9::index1();
+    }
+
+    public function p11_index()
+    {
+        Process11::index1();
+    }
+
+    public function p12_index()
+    {
+        Process12::index1();
+    }
+
+    public function pt_index()
+    {
+        ProcessTst::index1();
+    }
+
 }

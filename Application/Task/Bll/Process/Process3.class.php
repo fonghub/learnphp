@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/3.%20php%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%9D%E6%8E%A2---%E5%AD%A4%E5%84%BF%E5%92%8C%E5%83%B5%E5%B0%B8.md
@@ -9,13 +9,13 @@ namespace Cli\Controller;
  * 孤儿进程是指父进程在fork出子进程后，自己先完了。
  * 僵尸进程是指父进程在fork出子进程，而后子进程在结束后，父进程并没有调用wait或者waitpid等完成对其清理善后工作，导致该子进程进程ID、文件描述符等依然保留在系统中，极大浪费了系统资源。
 */
-class Process3Controller
+class Process3
 {
     /*
      * 孤儿进程的出现
      * 孤儿进程被init进程收养
      */
-    public function index1()
+    public static function index1()
     {
         $pid = pcntl_fork();
         if( $pid > 0 ){
@@ -39,7 +39,7 @@ class Process3Controller
      * 僵尸进程的出现
      * 僵尸进程的危害
      */
-    public function index2()
+    public static function index2()
     {
         $pid = pcntl_fork();
         if( $pid > 0 ){
@@ -59,7 +59,7 @@ class Process3Controller
     /*
      * 通过pcntl_wait()来避免僵尸进程
      */
-    public function index3()
+    public static function index3()
     {
         $pid = pcntl_fork();
         if( $pid > 0 ){
@@ -88,7 +88,7 @@ class Process3Controller
      * pcntl_waitpid()来避免僵尸进程
      * pcntl_waitpid( $pid, &$status, $option = 0 )
      */
-    public function index4()
+    public static function index4()
     {
         $pid = pcntl_fork();
         if( $pid > 0 ){
@@ -120,7 +120,7 @@ class Process3Controller
      * pcntl_waitpid( $pid, &$status, $option = 0 )
      * 将第三个option参数设置为常量WNOHANG，则可以避免主进程阻塞挂起，此处父进程将立即返回继续往下执行剩下的代码
      */
-    public function index5()
+    public static function index5()
     {
         $pid = pcntl_fork();
         if( $pid > 0 ){

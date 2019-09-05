@@ -1,17 +1,17 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 
-class ProcessTstController
+class ProcessTst
 {
 
 
     /*
      *服务器端
      */
-    public function index1()
+    public static function index1()
     {
         //确保在连接客户端时不会超时
         set_time_limit(0);
@@ -80,7 +80,7 @@ class ProcessTstController
     /*
      * 客户端
      */
-    public function index2()
+    public static function index2()
     {
         error_reporting(E_ALL);
         set_time_limit(0);

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 
 use Think\Log;
@@ -12,10 +12,10 @@ use Think\Log;
  * 客户端接收结果
  * 通过ps -axu查看进程，可以发现有一个主进程+两个子进程
  */
-class Process12Controller
+class Process12
 {
 
-    public function server() // TODO
+    public static function server() // TODO
     {
         global $child_pid;
         $child_pid = array();
@@ -85,7 +85,7 @@ class Process12Controller
     }
 
 
-    public function client($name='xiaoming',$age=20)
+    public static function client($name='xiaoming',$age=20)
     {
         $host = '0.0.0.0';
         $port = 9997;

@@ -1,19 +1,19 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/11.%20PHP%20socket%E5%88%9D%E6%8E%A2---select%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8.md
  */
-class Process11Controller
+class Process11
 {
 
 
     /*
      * telnet 127.0.0.1 9996
      */
-    public function index1()
+    public static function index1()
     {
         // BEGIN 创建一个tcp socket服务器
         $host = '0.0.0.0';

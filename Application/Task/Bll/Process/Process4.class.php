@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/4.%20php%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%9D%E6%8E%A2---%E4%BF%A1%E5%8F%B7.md
  */
-class Process4Controller
+class Process4
 {
 
     /*
      * 在父进程不断while循环调用pcntl_waitpid()
      */
-    public function index1()
+    public static function index1()
     {
         $pid = pcntl_fork();
         if( 0 > $pid ){
@@ -43,7 +43,7 @@ class Process4Controller
      * 安装响应信号处理器，pcntl_signal()
      * 让信号处理器运行起来，pcntl_signal_dispatch()
      */
-    public function index2()
+    public static function index2()
     {
         $pid = pcntl_fork();
         if( 0 > $pid ){

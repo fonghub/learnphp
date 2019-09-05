@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/6.%20php%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%9D%E6%8E%A2---%E5%88%A9%E7%94%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%8F%91%E7%82%B9%E5%84%BF%E4%B8%9C%E8%A5%BF.md
  */
-class Process6Controller
+class Process6
 {
 
     /*
      * 将程序daemon化了！
      */
-    public function index1()
+    public static function index1()
     {
         // 设置umask为0，这样，当前进程创建的文件权限则为777
         umask( 0 );
@@ -61,7 +61,7 @@ class Process6Controller
      * 1个主进程
      * 5个worker进程
      */
-    public function index2()
+    public static function index2()
     {
         // 由于*NIX好像并没有（如果有，请告知）可以获取父进程fork出所有的子进程的ID们的功能，所以这个需要我们自己来保存
         global $child_pid;

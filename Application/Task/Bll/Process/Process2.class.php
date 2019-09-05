@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/2.%20php%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%9D%E6%8E%A2---%E5%BC%80%E7%AF%87.md
  */
-class Process2Controller
+class Process2
 {
 
     /*
@@ -14,7 +14,7 @@ class Process2Controller
      * 在调用完pcntl_fork()后，该函数会返回两个值。
      * 在父进程中返回子进程的进程ID，在子进程内部本身返回数字0。
      */
-    public function index1()
+    public static function index1()
     {
         $pid = pcntl_fork();
         if ($pid > 0){
@@ -29,7 +29,7 @@ class Process2Controller
     /*
      * 子进程拥有父进程的数据副本，而并不是共享
      */
-    public function index2()
+    public static function index2()
     {
         $number = 1;
         $pid = pcntl_fork();
@@ -47,7 +47,7 @@ class Process2Controller
     /*
      *子进程分别拥有父进程的数据副本，不共享
      */
-    public function index22()
+    public static function index22()
     {
         $number = 1;
         for ($i = 1;$i <= 3;$i++){
@@ -67,7 +67,7 @@ class Process2Controller
     /*
      * 显示了7次 “ children ”
      */
-    public function index3()
+    public static function index3()
     {
         for ($i = 1;$i <= 3;$i++){
             $pid = pcntl_fork();
@@ -84,7 +84,7 @@ class Process2Controller
     /*
      * 显示了3次 “ children ”
      */
-    public function index4()
+    public static function index4()
     {
         for ($i = 1;$i <= 3;$i++){
             $pid = pcntl_fork();

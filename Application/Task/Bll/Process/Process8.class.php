@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/8.%20php%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%88%9D%E6%8E%A2---%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E4%BA%8C%E4%B8%89%E4%BA%8B.md
  */
-class Process8Controller
+class Process8
 {
     const SHM_VAR = 1;
     /*
      * 命名管道
      */
-    public function index1()
+    public static function index1()
     {
         // 管道文件绝对路径
         $pipe_file = APP_PATH.'../Public/Common/content' . DIRECTORY_SEPARATOR . 'test.pipe';
@@ -48,7 +48,7 @@ class Process8Controller
     /*
      * 消息队列
      */
-    public function index2()
+    public static function index2()
     {
         // 使用ftok创建一个键名，注意这个函数的第二个参数“需要一个字符的字符串”
         /*
@@ -86,7 +86,7 @@ class Process8Controller
     /*
      * 信号量与共享内存
      */
-    public function index3()
+    public static function index3()
     {
         // sem key
         $sem_key = ftok( __FILE__, 'b' );

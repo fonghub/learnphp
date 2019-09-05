@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Cli\Controller;
+namespace Task\Bll\Process;
 
 /*
  * https://github.com/elarity/advanced-php/blob/master/9.%20PHP%20Socket%E5%88%9D%E6%8E%A2---%E5%85%88%E4%BB%8E%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84socket%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%A7%8B.md
  */
-class Process9Controller
+class Process9
 {
 
     /*
      * 最简单socket服务器
      */
-    public function index1()
+    public static function index1()
     {
         $host = '0.0.0.0';
         $port = 9990;
@@ -44,7 +44,7 @@ class Process9Controller
      * 最简单socket服务器
      * 多进程
      */
-    public function index2()
+    public static function index2()
     {
         $host = '0.0.0.0';
         $port = 9999;
@@ -82,7 +82,7 @@ class Process9Controller
      * 多进程
      * 固定数量的子进程
      */
-    public function index3() // TODO
+    public static function index3() // TODO
     {
         $host = '0.0.0.0';
         $port = 9997;
