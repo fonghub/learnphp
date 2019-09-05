@@ -15,8 +15,30 @@ use Think\Log;
 class Process12
 {
 
+    /*
+     * 守护进程
+     */
+    public static function daemon()
+    {
+        $pid = pcntl_fork();
+        if ($pid < 0)
+            exit('fork error');
+        elseif ($pid > 0)
+            exit();
+
+        $sid = posix_setsid();
+        if ($sid < 0) exit('setsid error sid='.$sid);
+
+        $pid = pcntl_fork();
+        if ($pid < 0)
+            exit('fork error');
+        elseif ($pid > 0)
+            exit();
+    }
+
     public static function server() // TODO
     {
+        self::daemon();
         global $child_pid;
         $child_pid = array();
         $host = '0.0.0.0';
@@ -24,9 +46,19 @@ class Process12
         // 创建一个tcp socket
         $listen_socket = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
         // 将socket bind到IP：port上
-        socket_bind( $listen_socket, $host, $port );
+        $res = socket_bind( $listen_socket, $host, $port );
+        if (!$res){
+            $err = socket_last_error();
+            $err_str = socket_strerror($err);
+            exit("socket_bind error ".$err_str);
+        }
         // 开始监听socket
-        socket_listen( $listen_socket );
+        $res = socket_listen( $listen_socket );
+        if (!$res){
+            $err = socket_last_error();
+            $err_str = socket_strerror($err);
+            exit("socket_listen error ".$err_str);
+        }
         // 给主进程换个名字
         cli_set_process_title( 'phpserver master process' );
 
@@ -68,7 +100,7 @@ class Process12
                 }
             }
         };
-        $forkFunction($listen_socket,2);
+        $forkFunction($listen_socket,5);
 
 
         // 主进程不退出，监控子进程的状态
@@ -76,8 +108,8 @@ class Process12
             pcntl_signal_dispatch();
             $processNum = count($child_pid);
             //保证两个子进程数量
-            if ($processNum < 2){
-                $forkFunction($listen_socket,2-$processNum);
+            if ($processNum < 5){
+                $forkFunction($listen_socket,5-$processNum);
             }
             sleep( 1 );
         }
@@ -90,15 +122,27 @@ class Process12
         $host = '0.0.0.0';
         $port = 9997;
         $listen_socket = socket_create( AF_INET, SOCK_STREAM, SOL_TCP );
-        socket_connect($listen_socket,$host,$port);
+        $res = socket_connect($listen_socket,$host,$port);
+        if (!$res){
+            $err = socket_last_error();
+            $err_str = socket_strerror($err);
+            exit($err_str);
+        }
         $xiaoming = array(
             'name'=>$name,
             'age'=>$age
         );
         $buf = json_encode($xiaoming);
-        socket_write($listen_socket,$buf,strlen($buf));
+        $num = socket_write($listen_socket,$buf,strlen($buf));
+        if ($num)
+            echo "successful send ".$num."\n";
         $res = socket_read($listen_socket,8192);
         echo $res."\n";
         socket_close($listen_socket);
+    }
+
+    public static function stop()
+    {
+        shell_exec("ps axopid,cmd|grep phpserver|grep -v grep|awk '{print $1}'|xargs kill -9");
     }
 }

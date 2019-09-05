@@ -58,10 +58,28 @@ class ProcessController
         Process11::index1();
     }
 
-    public function p12_index()
+    public function p12_start()
     {
-        Process12::index1();
+        Process12::server();
     }
+
+    public function p12_stop()
+    {
+        Process12::stop();
+    }
+
+
+    public function p12_index1()
+    {
+        $i = 0;
+        while ($i < 100000){
+            Process12::client('aac',$i);
+            $i++;
+        }
+
+    }
+
+
 
     public function pt_index()
     {
