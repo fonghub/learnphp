@@ -2,17 +2,38 @@
 
 namespace Task\Bll\DP;
 
-class singleton
+class Singleton
 {
 
+    private $vhost;
+    private static $instance = array();
 
-    public function __construct()
+    private function __construct($vhost)
     {
-        echo "__construct<br>";
+        echo "instance {$vhost}<br>";
+        $this->vhost = $vhost;
     }
 
-    public function index()
+    private function __clone()
     {
-        echo "index<br>";
+
+    }
+
+    public static function index()
+    {
+        echo 'index';
+    }
+
+    public function getVhost()
+    {
+        return $this->vhost;
+    }
+
+    public static function getInstance($vhost)
+    {
+        if (!(self::$instance[$vhost] instanceof Singleton))
+            self::$instance[$vhost] = new Singleton($vhost);
+
+        return self::$instance[$vhost];
     }
 }
