@@ -5,6 +5,7 @@ namespace Cli\Controller;
 
 
 use Task\Bll\DataStructure\Bubble;
+use Task\Bll\DataStructure\Insert;
 use Task\Bll\DataStructure\Select;
 use Think\Controller;
 
@@ -33,9 +34,20 @@ class DataStructureController extends Controller
         $this->res = Bubble::index1($this->arr);
     }
 
+    /*
+     * 选择排序
+     */
     public function select()
     {
         $this->res = Select::index($this->arr);
+    }
+
+    /*
+     * 插入排序
+     */
+    public function insert()
+    {
+        $this->res = Insert::index($this->arr);
     }
 
 
