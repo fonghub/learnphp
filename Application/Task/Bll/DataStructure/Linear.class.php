@@ -24,7 +24,7 @@ class Linear
     //从索引下标位置的元素开始，向后退一位，插入新元素
     public function add_item($index,$item)
     {
-        $length = $this->get_length_v();
+        $length = $this->get_length_v($index);
         for ($i = $length; $i > $index; $i--){
             $this->items[$i] = $this->items[$i - 1];
         }
@@ -97,6 +97,6 @@ class Linear
         for ($i = 0; $i < $length; $i++){
             echo $this->items[$i]." ";
         }
-        echo "<br>";
+        echo "\n";
     }
 }
