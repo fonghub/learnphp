@@ -19,7 +19,7 @@ class Singleton
     //构造器私有化:禁止从类外部实例化
     private function __construct($vhost)
     {
-        echo "instance {$vhost}<br>";
+        echo "instance {$vhost}\t";
         $this->vhost = $vhost;
     }
 
