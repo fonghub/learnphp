@@ -6,6 +6,7 @@ namespace Cli\Controller;
 
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
+use Task\Bll\DataStructure\Stack;
 use Think\Controller;
 
 class DsController extends Controller
@@ -69,6 +70,23 @@ class DsController extends Controller
 
         $link->truncate();
         $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+    }
+
+    public function stack()
+    {
+        $stack = new Stack();
+        $stack->push(1);
+        $stack->push(2);
+        $stack->push(3);
+        $stack->push(4);
+
+        $arr = $stack->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $value = $stack->pop();
+        echo "pop value={$value}\n";
+        $arr = $stack->get_items();
         echo "All items: ".json_encode($arr)."\n";
     }
 }
