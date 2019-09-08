@@ -5,6 +5,7 @@ namespace Cli\Controller;
 
 
 use Task\Bll\DataStructure\Linear;
+use Task\Bll\DataStructure\Linked;
 use Think\Controller;
 
 class DsController extends Controller
@@ -41,5 +42,33 @@ class DsController extends Controller
         $linear->add_item(0,1);
         $linear->get_items();
 
+    }
+
+    public function linked()
+    {
+        $link = new Linked();
+
+        $link->add_item(0,'zf');
+        $link->add_item(1,20);
+        $link->add_item(2,'cl');
+        $link->add_item(3,'st');
+        $link->add_item(4,'gz');
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $length = $link->get_length();
+        echo "length={$length}\n";
+
+        $link->del_item(1);
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $link->interrupt(2);
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $link->truncate();
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
     }
 }
