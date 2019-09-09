@@ -6,6 +6,7 @@ namespace Cli\Controller;
 
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
+use Task\Bll\DataStructure\Queue;
 use Task\Bll\DataStructure\Stack;
 use Think\Controller;
 
@@ -87,6 +88,24 @@ class DsController extends Controller
         $value = $stack->pop();
         echo "pop value={$value}\n";
         $arr = $stack->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+    }
+
+
+    public function queue()
+    {
+        $queue = new Queue();
+        $queue->push(1);
+        $queue->push(2);
+        $queue->push(3);
+        $queue->push(4);
+        $queue->push(5);
+
+        $arr = $queue->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $queue->shift();
+        $arr = $queue->get_items();
         echo "All items: ".json_encode($arr)."\n";
     }
 }
