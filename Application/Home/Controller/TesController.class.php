@@ -33,4 +33,31 @@ class TesController extends Controller
 //        call_user_func_array(array($t2,'index3'),array());
     }
 
+    public function heredoc()
+    {
+        $title = "标题";
+        $body = "内容";
+        $html = <<<EOF
+            <html>
+            <header>
+            <title>$title</title>
+            </header>
+            <body>
+            $body
+            </body>
+            </html>
+EOF;
+    echo $html;
+    }
+
+    public function heredoc2()
+    {
+        $temp = dirname(realpath(APP_PATH)).'/Public/Common/content/content_tst.html';
+        $html = file_get_contents($temp);
+        $content = <<<EOF
+        $html
+EOF;
+        echo $content;
+    }
+
 }
