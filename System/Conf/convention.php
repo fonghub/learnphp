@@ -72,11 +72,11 @@ return  array(
     'DB_MASTER_NUM'         =>  1, // 读写分离后 主服务器数量
     'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
     /* 数据缓存设置 */
-    'DATA_CACHE_TIME'       =>  0,      // 数据缓存有效期 0表示永久缓存
+    'DATA_CACHE_TIME'       =>  3600,      // 数据缓存有效期 0表示永久缓存
     'DATA_CACHE_COMPRESS'   =>  false,   // 数据缓存是否压缩缓存
     'DATA_CACHE_CHECK'      =>  false,   // 数据缓存是否校验缓存
     'DATA_CACHE_PREFIX'     =>  '',     // 缓存前缀
-    'DATA_CACHE_TYPE'       =>  'File',  // 数据缓存类型,支持:File|Db|Apc|Memcache|Shmop|Sqlite|Xcache|Apachenote|Eaccelerator
+    'DATA_CACHE_TYPE'       =>  'Redis',  // 数据缓存类型,支持:File|Db|Apc|Memcache|Shmop|Sqlite|Xcache|Apachenote|Eaccelerator
     'DATA_CACHE_PATH'       =>  TEMP_PATH,// 缓存路径设置 (仅对File方式缓存有效)
     'DATA_CACHE_KEY'        =>  '',	// 缓存文件KEY (仅对File方式缓存有效)    
     'DATA_CACHE_SUBDIR'     =>  false,    // 使用子目录缓存 (自动根据缓存标识的哈希创建子目录)
@@ -101,6 +101,11 @@ return  array(
     'SESSION_TYPE'          =>  '', // session hander类型 默认无需设置 除非扩展了session hander驱动
     'SESSION_PREFIX'        =>  '', // session 前缀
     //'VAR_SESSION_ID'      =>  'session_id',     //sessionID的提交变量
+
+    /* Redis配置 */
+    'REDIS_HOST'            =>  '127.0.0.1',   // 地址
+    'REDIS_PORT'            =>  6379,          // 端口
+    'REDIS_AUTH'            =>  'redis1234',      // 密码
 
     /* 模板引擎设置 */
     'TMPL_CONTENT_TYPE'     =>  'text/html', // 默认模板输出类型
