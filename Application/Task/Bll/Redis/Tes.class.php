@@ -5,6 +5,7 @@ class Tes
 {
 
     public $item = null;
+    public $vohst = null;
 
     public function __construct($item)
     {
@@ -14,5 +15,10 @@ class Tes
     public function getItem()
     {
         return $this->item;
+    }
+
+    public function setVhost($vohost)
+    {
+        $this->vohst = $vohost;
     }
 }

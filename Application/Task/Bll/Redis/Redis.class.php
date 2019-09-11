@@ -28,6 +28,7 @@ class Redis
     {
         $conn = unserialize($this->redis->hGet($key,$field));
         if (empty($conn) || !is_object($conn)){
+            echo "if<br>";
             $conn = new Tes($field);
             $this->redis->hSet($key,$field,serialize($conn));
         }

@@ -5,6 +5,7 @@ namespace Home\Controller;
 
 
 use Task\Bll\Redis\Redis;
+use Task\Bll\Redis\Tes;
 
 class TesRedisController
 {
@@ -30,14 +31,17 @@ class TesRedisController
     {
         $conn = $this->redis->getConn_hash($this->key,$vhost);
         var_dump($conn);
-        $item = $conn->getItem();
-        echo $item;
+        $conn->setVhost($vhost);
+        var_dump($conn);
+//        $item = $conn->getItem();
+//        echo $item;
     }
 
     public function getStr($vhost)
     {
         $conn = $this->redis->getConn_str($vhost);
-        $item = $conn->getItem();
-        echo $item;
+        var_dump($conn);
+        $conn->setVhost($vhost);
+        var_dump($conn);
     }
 }
