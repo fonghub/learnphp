@@ -8,6 +8,8 @@ use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
 use Task\Bll\DataStructure\Queue;
 use Task\Bll\DataStructure\Stack;
+use Task\Bll\DataStructure\Tree;
+use Task\Bll\DataStructure\viewTree;
 use Think\Controller;
 
 class DsController extends Controller
@@ -107,5 +109,23 @@ class DsController extends Controller
         $queue->shift();
         $arr = $queue->get_items();
         echo "All items: ".json_encode($arr)."\n";
+    }
+
+    public function tree()
+    {
+        $tree = new Tree(1);
+        $left = $tree->setLeft(new Tree(2));
+        $right = $tree->setRight(new Tree(3));
+
+        $left->setLeft(new Tree(4));
+        $left->setRight(new Tree(5));
+
+        $right->setRight(new Tree(6));
+        print_r($tree);
+
+
+        $vt = new viewTree();
+        $vt->preOrder($tree);
+
     }
 }
