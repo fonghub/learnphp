@@ -7,6 +7,7 @@ namespace Cli\Controller;
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
 use Task\Bll\DataStructure\Queue;
+use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Stack;
 use Task\Bll\DataStructure\Tree;
 use Task\Bll\DataStructure\viewTree;
@@ -129,5 +130,30 @@ class DsController extends Controller
         $tree->sufOrder($tree);
         echo "\n";
 
+    }
+
+    public function searchTree()
+    {
+        $tree = new SearchTree(10);
+        SearchTree::insert($tree,new SearchTree(2));
+        SearchTree::insert($tree,new SearchTree(30));
+        SearchTree::insert($tree,new SearchTree(26));
+        SearchTree::insert($tree,new SearchTree(12));
+        SearchTree::insert($tree,new SearchTree(8));
+        SearchTree::insert($tree,new SearchTree(1));
+        $tree->preOrder($tree);
+        echo "\n";
+        $tree->minOrder($tree);
+        echo "\n";
+        $tree->subOrder($tree);
+        echo "\n";
+
+        $node = SearchTree::find($tree,2);
+        print_r($node);
+
+        $min = SearchTree::findMin($tree);
+        $max = SearchTree::findMax($tree);
+        echo $min.PHP_EOL;
+        echo $max.PHP_EOL;
     }
 }
