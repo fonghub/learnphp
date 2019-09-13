@@ -121,11 +121,13 @@ class DsController extends Controller
         $left->setRight(new Tree(5));
 
         $right->setRight(new Tree(6));
-        print_r($tree);
-
-
-        $vt = new viewTree();
-        $vt->preOrder($tree);
+//        print_r($tree);
+        $tree->preOrder($tree);
+        echo "\n";
+        $tree->midOrder($tree);
+        echo "\n";
+        $tree->sufOrder($tree);
+        echo "\n";
 
     }
 }
