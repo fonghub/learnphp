@@ -242,7 +242,7 @@ TMP;
 
 #密码加密
 function QEnPassword($password){
-	return md5('jinpin'.$password.'2018');
+	return md5('qweasd'.$password.'2018');
 }
 
 #jsonerror
