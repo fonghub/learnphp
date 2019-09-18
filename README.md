@@ -1,4 +1,7 @@
-### 项目名
+### php-component
+
+模块化学习PHP
+
 #### 一、Cli模块
 * DataStructureController 排序算法
     * 冒泡排序

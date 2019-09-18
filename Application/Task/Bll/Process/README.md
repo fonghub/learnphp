@@ -1,0 +1,1 @@
+从 [elarity](https://github.com/elarity/advanced-php)  转载学习
