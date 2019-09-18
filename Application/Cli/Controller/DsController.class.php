@@ -156,4 +156,9 @@ class DsController extends Controller
         echo $min.PHP_EOL;
         echo $max.PHP_EOL;
     }
+
+    public function heap()
+    {
+
+    }
 }
