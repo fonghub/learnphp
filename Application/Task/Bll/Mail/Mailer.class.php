@@ -1,5 +1,5 @@
 <?php
-namespace Task\Bll;
+namespace Task\Bll\Mail;
 
 use Task\Sdk\PHPMailer\Exception;
 use Task\Sdk\PHPMailer\PHPMailer;

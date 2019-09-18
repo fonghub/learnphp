@@ -4,7 +4,7 @@
 namespace Home\Controller;
 
 
-use Task\Bll\Mailer;
+use Task\Bll\Mail\Mailer;
 use Think\Controller;
 use Think\Exception;
 
