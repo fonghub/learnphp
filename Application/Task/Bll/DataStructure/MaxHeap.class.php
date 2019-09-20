@@ -95,10 +95,3 @@ class MaxHeap extends Base
         }
     }
 }
-
-$max = MaxHeap::array2max(array(50, 10, 90, 30, 70, 40, 80, 60, 20));
-print_r($max->element);
-$max->insert(5);
-print_r($max->element);
-$max->delete();
-print_r($max->element);

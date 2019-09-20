@@ -6,6 +6,8 @@ namespace Cli\Controller;
 
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
+use Task\Bll\DataStructure\MaxHeap;
+use Task\Bll\DataStructure\MaxHeap1;
 use Task\Bll\DataStructure\Queue;
 use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Stack;
@@ -159,6 +161,24 @@ class DsController extends Controller
 
     public function heap()
     {
+        $max = MaxHeap::array2max(array(50, 10, 90, 30, 70, 40, 80, 60, 20));
+        print_r($max->element);
+        echo $max->size;
+//        $max->insert(5);
+//        print_r($max->element);
+//        $max->delete();
+//        print_r($max->element);
+    }
 
+    public function heap1()
+    {
+        $arr = array(50, 10, 90, 30, 70, 40, 80, 60, 20);
+        $mh1 = new MaxHeap1($arr);
+        $mh1->shiftUP();
+        print_r($mh1->getElement());
+        $mh1->insert(75);
+        print_r($mh1->getElement());
+        echo 'get='.$mh1->get()."\n";
+        print_r($mh1->getElement());
     }
 }
