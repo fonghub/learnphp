@@ -6,6 +6,7 @@ namespace Cli\Controller;
 
 use Task\Bll\DataStructure\Bubble;
 use Task\Bll\DataStructure\Insert;
+use Task\Bll\DataStructure\MaxHeap1;
 use Task\Bll\DataStructure\Select;
 use Think\Controller;
 
@@ -50,6 +51,15 @@ class DataStructureController extends Controller
         $this->res = Insert::index($this->arr);
     }
 
+    /*
+     * 堆排序
+     */
+    public function heap()
+    {
+        $mh1 = new MaxHeap1($this->arr);
+        $this->res = $mh1->sort();
+        $this->res = array_reverse($this->res);
+    }
 
     public function __destruct()
     {

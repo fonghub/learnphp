@@ -174,9 +174,9 @@ class DsController extends Controller
     {
         $arr = array(50, 10, 90, 30, 70, 40, 80, 60, 20);
         $mh1 = new MaxHeap1($arr);
-        $mh1->shiftUP();
         print_r($mh1->getElement());
         $mh1->insert(75);
+        echo "insert=75\n";
         print_r($mh1->getElement());
         echo 'get='.$mh1->get()."\n";
         print_r($mh1->getElement());

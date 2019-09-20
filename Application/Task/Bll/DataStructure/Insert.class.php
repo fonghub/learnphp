@@ -32,5 +32,6 @@ class Insert
             }
             echo "第".($outer)."轮排序：".json_encode($arr)."\n";
         }
+        return $arr;
     }
 }

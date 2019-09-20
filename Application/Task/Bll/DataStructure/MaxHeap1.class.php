@@ -18,6 +18,7 @@ class MaxHeap1
         $this->element = $arr;
         $this->size = count($arr);
         array_unshift($this->element,null);
+        $this->shiftUP();
     }
 
     /*
@@ -90,11 +91,24 @@ class MaxHeap1
         $this->element[1] = $this->element[$this->size];
         $this->shiftUP();
         unset($this->element[$this->size]);
+        $this->size--;
         return $data;
     }
 
     public function getElement()
     {
         return $this->element;
+    }
+
+    /*
+     * 堆排序
+     */
+    public function sort()
+    {
+        $data = [];
+        while ($this->size){
+            $data[] = $this->get();
+        }
+        return $data;
     }
 }
