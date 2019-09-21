@@ -134,30 +134,6 @@ class DsController extends Controller
 
     }
 
-    public function searchTree()
-    {
-        $tree = new SearchTree(10);
-        SearchTree::insert($tree,new SearchTree(2));
-        SearchTree::insert($tree,new SearchTree(30));
-        SearchTree::insert($tree,new SearchTree(26));
-        SearchTree::insert($tree,new SearchTree(12));
-        SearchTree::insert($tree,new SearchTree(8));
-        SearchTree::insert($tree,new SearchTree(1));
-        $tree->preOrder($tree);
-        echo "\n";
-        $tree->minOrder($tree);
-        echo "\n";
-        $tree->subOrder($tree);
-        echo "\n";
-
-        $node = SearchTree::find($tree,2);
-        print_r($node);
-
-        $min = SearchTree::findMin($tree);
-        $max = SearchTree::findMax($tree);
-        echo $min.PHP_EOL;
-        echo $max.PHP_EOL;
-    }
 
     public function heap()
     {

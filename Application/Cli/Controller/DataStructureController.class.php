@@ -7,6 +7,7 @@ namespace Cli\Controller;
 use Task\Bll\DataStructure\Bubble;
 use Task\Bll\DataStructure\Insert;
 use Task\Bll\DataStructure\MaxHeap1;
+use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Select;
 use Think\Controller;
 
@@ -49,6 +50,20 @@ class DataStructureController extends Controller
     public function insert()
     {
         $this->res = Insert::index($this->arr);
+    }
+
+    /*
+     * 利用树排序
+     */
+    public function tree()
+    {
+        $data = array_shift($this->arr);
+        $tree = new SearchTree($data);
+        foreach ($this->arr as $value){
+            SearchTree::insert($tree,new SearchTree($value));
+        }
+        $tree->minOrder($tree);
+        echo "\n";
     }
 
     /*
