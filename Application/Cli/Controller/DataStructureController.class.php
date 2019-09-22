@@ -4,6 +4,7 @@
 namespace Cli\Controller;
 
 
+use Task\Bll\DataStructure\BS;
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
 use Task\Bll\DataStructure\MaxHeap;
@@ -158,5 +159,16 @@ class DataStructureController extends Controller
         print_r($mh1->getElement());
         echo 'get='.$mh1->get()."\n";
         print_r($mh1->getElement());
+    }
+
+    /*
+     * 二分查找
+     */
+    public function BS($data)
+    {
+        $arr = [1,3,5,7,9,11,13];
+        $bs = new BS($arr);
+        $res = $bs->find($data);
+        echo "查找{$data}，结果为：{$res}\n";
     }
 }
