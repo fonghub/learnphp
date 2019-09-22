@@ -3,21 +3,24 @@
 模块化学习PHP
 
 #### 一、Cli模块
-* DataStructureController 排序算法
+* SortingController 排序算法
     * 冒泡排序
     * 选择排序
     * 插入排序
+    * 利用树结构排序
+    * 堆排序
     
 * DpController 设计模式
     * 单例
     
-* DsController 数据结构
+* DataStructureController 数据结构
     * 线性表-顺序存储
     * 线性表-链式存储
     * 栈
     * 队列
     * 树
     * 二叉树搜索
+    * 堆
     
 * ProcessController 多进程
     * 守护进程

@@ -4,80 +4,159 @@
 namespace Cli\Controller;
 
 
-use Task\Bll\DataStructure\Bubble;
-use Task\Bll\DataStructure\Insert;
+use Task\Bll\DataStructure\Linear;
+use Task\Bll\DataStructure\Linked;
+use Task\Bll\DataStructure\MaxHeap;
 use Task\Bll\DataStructure\MaxHeap1;
+use Task\Bll\DataStructure\Queue;
 use Task\Bll\DataStructure\SearchTree;
-use Task\Bll\DataStructure\Select;
+use Task\Bll\DataStructure\Stack;
+use Task\Bll\DataStructure\Tree;
+use Task\Bll\DataStructure\viewTree;
 use Think\Controller;
-
+/*
+ * 数据结构
+ */
 class DataStructureController extends Controller
 {
 
-    public $arr = array();
-    public $res = array();
-
-    public function __construct()
-    {
-        $this->arr = [6,4,7,2,9,8,1];
-        echo "第0轮排序：".json_encode($this->arr)."\n";
-    }
-
     public function index()
     {
-        echo "index\n";
+        echo 'index';
     }
 
-    /*
-     * 冒泡
-     */
-    public function bubble()
+    public function linear()
     {
-        $this->res = Bubble::index1($this->arr);
+        $linear = new Linear();
+        $linear->add_item(0,1);
+        $linear->add_item(1,2);
+        $linear->add_item(1,3);
+        $linear->add_item(1,4);
+        $linear->add_item(1,5);
+        $linear->add_item(1,6);
+        $linear->add_item(1,7);
+        $linear->get_items();
+
+        $linear->del_item(1);
+        $linear->get_items();
+
+        echo $linear->get_item(2)."\n";
+
+        echo $linear->get_index(6)."\n";
+
+        $linear->update_item(1,7);
+        $linear->get_items();
+
+        $linear->truncate();
+        $linear->add_item(0,1);
+        $linear->get_items();
+
     }
 
-    /*
-     * 选择排序
-     */
-    public function select()
+    public function linked()
     {
-        $this->res = Select::index($this->arr);
+        $link = new Linked();
+
+        $link->add_item(0,'zf');
+        $link->add_item(1,20);
+        $link->add_item(2,'cl');
+        $link->add_item(3,'st');
+        $link->add_item(4,'gz');
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $length = $link->get_length();
+        echo "length={$length}\n";
+
+        $link->del_item(1);
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $link->interrupt(2);
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $link->truncate();
+        $arr = $link->get_items();
+        echo "All items: ".json_encode($arr)."\n";
     }
 
-    /*
-     * 插入排序
-     */
-    public function insert()
+    public function stack()
     {
-        $this->res = Insert::index($this->arr);
+        $stack = new Stack();
+        $stack->push(1);
+        $stack->push(2);
+        $stack->push(3);
+        $stack->push(4);
+
+        $arr = $stack->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $value = $stack->pop();
+        echo "pop value={$value}\n";
+        $arr = $stack->get_items();
+        echo "All items: ".json_encode($arr)."\n";
     }
 
-    /*
-     * 利用树排序
-     */
+
+    public function queue()
+    {
+        $queue = new Queue();
+        $queue->push(1);
+        $queue->push(2);
+        $queue->push(3);
+        $queue->push(4);
+        $queue->push(5);
+
+        $arr = $queue->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+
+        $queue->shift();
+        $arr = $queue->get_items();
+        echo "All items: ".json_encode($arr)."\n";
+    }
+
     public function tree()
     {
-        $data = array_shift($this->arr);
-        $tree = new SearchTree($data);
-        foreach ($this->arr as $value){
-            SearchTree::insert($tree,new SearchTree($value));
-        }
-        $tree->minOrder($tree);
+        $tree = new Tree(1);
+        $left = $tree->setLeft(new Tree(2));
+        $right = $tree->setRight(new Tree(3));
+
+        $left->setLeft(new Tree(4));
+        $left->setRight(new Tree(5));
+
+        $right->setRight(new Tree(6));
+//        print_r($tree);
+        $tree->preOrder($tree);
         echo "\n";
+        $tree->midOrder($tree);
+        echo "\n";
+        $tree->sufOrder($tree);
+        echo "\n";
+
     }
 
-    /*
-     * 堆排序
-     */
+
     public function heap()
     {
-        $mh1 = new MaxHeap1($this->arr);
-        $this->res = $mh1->sort();
-        $this->res = array_reverse($this->res);
+        $max = MaxHeap::array2max(array(50, 10, 90, 30, 70, 40, 80, 60, 20));
+        print_r($max->element);
+        echo $max->size;
+//        $max->insert(5);
+//        print_r($max->element);
+//        $max->delete();
+//        print_r($max->element);
     }
 
-    public function __destruct()
+    public function heap1()
     {
-        print_r($this->res);
+        $arr = array(50, 10, 90, 30, 70, 40, 80, 60, 20);
+        $mh1 = new MaxHeap1($arr);
+        print_r($mh1->getElement());
+        $mh1->insert(75);
+        echo "insert=75\n";
+        print_r($mh1->getElement());
+        echo 'get='.$mh1->get()."\n";
+        print_r($mh1->getElement());
     }
 }
