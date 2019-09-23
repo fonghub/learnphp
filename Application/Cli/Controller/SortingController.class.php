@@ -7,6 +7,7 @@ namespace Cli\Controller;
 use Task\Bll\DataStructure\Bubble;
 use Task\Bll\DataStructure\Insert;
 use Task\Bll\DataStructure\MaxHeap1;
+use Task\Bll\DataStructure\Quick;
 use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Select;
 use Think\Controller;
@@ -76,6 +77,14 @@ class SortingController extends Controller
         $mh1 = new MaxHeap1($this->arr);
         $this->res = $mh1->sort();
         $this->res = array_reverse($this->res);
+    }
+
+    /*
+     * 快速排序
+     */
+    public function quick()
+    {
+        $this->res = Quick::index($this->arr);
     }
 
     public function __destruct()
