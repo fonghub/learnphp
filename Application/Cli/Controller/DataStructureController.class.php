@@ -5,6 +5,7 @@ namespace Cli\Controller;
 
 
 use Task\Bll\DataStructure\BS;
+use Task\Bll\DataStructure\Index;
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
 use Task\Bll\DataStructure\MaxHeap;
@@ -170,5 +171,33 @@ class DataStructureController extends Controller
         $bs = new BS($arr);
         $res = $bs->find($data);
         echo "查找{$data}，结果为：{$res}\n";
+    }
+
+    /*
+     * 产生索引
+     */
+    public function makeIndex()
+    {
+        $filePath = dirname(realpath(APP_PATH))."/Public/Common/content/";
+        Index::make(100000,$filePath);
+    }
+
+    /*
+     * 无使用索引读数据
+     */
+    public function readIndex_1()
+    {
+        $filePath = dirname(realpath(APP_PATH))."/Public/Common/content/";
+        Index::read_1($filePath);
+    }
+
+
+    /*
+     * 使用索引读数据
+     */
+    public function readIndex_2()
+    {
+        $filePath = dirname(realpath(APP_PATH))."/Public/Common/content/";
+        Index::read_2($filePath);
     }
 }
