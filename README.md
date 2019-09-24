@@ -52,3 +52,6 @@
 * Tes2CurlController CURL
     * 模拟登陆
     
+* TraitTesController Traits
+    * 一种代码复用的方法
+    

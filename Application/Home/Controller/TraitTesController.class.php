@@ -8,6 +8,9 @@ use Task\Bll\Trait1\Cxk;
 use Task\Bll\Trait1\Dancer;
 use Task\Bll\Trait1\Singer;
 
+/*
+ * https://www.php.net/traits
+ */
 class TraitTesController
 {
     public function singer()
