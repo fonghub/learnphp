@@ -1,6 +1,7 @@
 <?php
 namespace Cli\Controller;
 
+use Task\Bll\Ds\MinHeap;
 use Think\Controller;
 use Task\Bll\Ds\Bubble;
 use Task\Bll\Ds\Insert;
@@ -70,7 +71,8 @@ class DsController extends Controller
 
 	public function heap()
 	{
-
+        $minHeap = new MinHeap($this->input);
+        $this->out = $minHeap->sort();
 	}
 
 	public function __destruct()
