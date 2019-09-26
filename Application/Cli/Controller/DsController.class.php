@@ -5,6 +5,7 @@ use Think\Controller;
 use Task\Bll\Ds\Bubble;
 use Task\Bll\Ds\Insert;
 use Task\Bll\Ds\Select;
+use Task\Bll\Ds\Quick;
 
 
 class DsController extends Controller
@@ -51,6 +52,25 @@ class DsController extends Controller
 	{
 		$select = new Select();
 		$this->out = $select->index2($this->input);
+	}
+
+	/*
+	*快速排序
+	*/
+	public function quick()
+	{
+		$quick = new Quick();
+		$this->out = $quick->index($this->input);
+	}
+
+	public function tree()
+	{
+
+	}
+
+	public function heap()
+	{
+
 	}
 
 	public function __destruct()
