@@ -2,6 +2,7 @@
 namespace Cli\Controller;
 
 use Task\Bll\Ds\MinHeap;
+use Task\Bll\Ds\Tree;
 use Think\Controller;
 use Task\Bll\Ds\Bubble;
 use Task\Bll\Ds\Insert;
@@ -66,7 +67,13 @@ class DsController extends Controller
 
 	public function tree()
 	{
-
+	    $data = array_shift($this->input);
+        $tree = new Tree($data);
+        while (count($this->input)){
+            $data = array_shift($this->input);
+            $tree->insert($tree,new Tree($data));
+        }
+        $this->out = $tree->minOrder($tree);
 	}
 
 	public function heap()
