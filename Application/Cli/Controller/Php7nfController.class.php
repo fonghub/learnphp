@@ -10,6 +10,7 @@ use Task\Bll\Php7NewFeatures\GroupUse\{GroupUse1,GroupUse2,GroupUse3};
 use Task\Bll\Php7NewFeatures\{ScalarTypeDeclarations,ReturnTypeDeclarations,NullCoalescingOperator,SpaceshipOperator,ConstantArrays};
 use Task\Bll\Php7NewFeatures\AnonymousClasses\Client;
 use Task\Bll\Php7NewFeatures\ClosureCall\CcClient;
+use Task\Bll\Php7NewFeatures\ErrorException\MathOperations;
 
 class Php7nfController 
 {
@@ -117,5 +118,12 @@ class Php7nfController
         $msg = "zaofeng";
         $res = $cc->index($msg);
         echo "name:".$res."\n";
+    }
+
+    public function errorException()
+    {
+        $mo = new MathOperations();
+        $res = $mo->index();
+        echo $res."\n";
     }
 }
