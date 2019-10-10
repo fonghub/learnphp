@@ -9,6 +9,7 @@ namespace Cli\Controller;
 use Task\Bll\Php7NewFeatures\GroupUse\{GroupUse1,GroupUse2,GroupUse3};
 use Task\Bll\Php7NewFeatures\{ScalarTypeDeclarations,ReturnTypeDeclarations,NullCoalescingOperator,SpaceshipOperator,ConstantArrays};
 use Task\Bll\Php7NewFeatures\AnonymousClasses\Client;
+use Task\Bll\Php7NewFeatures\ClosureCall\CcClient;
 
 class Php7nfController 
 {
@@ -108,5 +109,13 @@ class Php7nfController
         $res = $ca->index();
         print_r($res);
         $res->log("Hello World.");
+    }
+
+    public function closureCall()
+    {
+        $cc = new CcClient();
+        $msg = "zaofeng";
+        $res = $cc->index($msg);
+        echo "name:".$res."\n";
     }
 }
