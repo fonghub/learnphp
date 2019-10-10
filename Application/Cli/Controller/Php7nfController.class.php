@@ -8,6 +8,7 @@ namespace Cli\Controller;
 // use Task\Bll\Php7NewFeatures\SpaceshipOperator;
 use Task\Bll\Php7NewFeatures\GroupUse\{GroupUse1,GroupUse2,GroupUse3};
 use Task\Bll\Php7NewFeatures\{ScalarTypeDeclarations,ReturnTypeDeclarations,NullCoalescingOperator,SpaceshipOperator,ConstantArrays};
+use Task\Bll\Php7NewFeatures\AnonymousClasses\Client;
 
 class Php7nfController 
 {
@@ -88,10 +89,24 @@ class Php7nfController
        echo $gu3->index()."\n";
     }
     
+    /**
+     * 数组常量
+     */
     public function constantArrays()
     {
         $ca = new ConstantArrays();
         $ca->index();
         print_r(ANIMALS);
+    }
+
+    /**
+     * 使用new class实例化匿名类
+     */
+    public function anonymousClasses()
+    {
+        $ca = new Client();
+        $res = $ca->index();
+        print_r($res);
+        $res->log("Hello World.");
     }
 }
