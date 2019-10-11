@@ -1,1 +1,1 @@
-[PHPAlgorithms](https://github.com/doganoo/PHPAlgorithms)
+[doganoo](https://github.com/doganoo)
