@@ -10,6 +10,7 @@ use Task\Bll\DataStructure\MaxHeap1;
 use Task\Bll\DataStructure\Quick;
 use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Select;
+use Task\Bll\DataStructure\MergeSort;
 use Think\Controller;
 /*
  * 排序类
@@ -87,6 +88,14 @@ class SortingController extends Controller
         $this->res = Quick::index($this->arr);
     }
 
+    /*
+    *归并排序
+    */
+    public function merge()
+	{
+        $this->res = MergeSort::sort($this->arr);
+    }
+    
     public function __destruct()
     {
         print_r($this->res);
