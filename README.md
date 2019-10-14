@@ -42,6 +42,8 @@
     
 * NSPController 命名空间
 
+* CryptController 加密
+
 #### 二、Home模块
 * FileController 文件类
     * 读文件
