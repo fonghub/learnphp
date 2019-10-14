@@ -39,6 +39,8 @@
     * 匿名类
     * 新的方式闭包绑定对象实例
     * 允许把错误当作异常被捕获
+    
+* NSPController 命名空间
 
 #### 二、Home模块
 * FileController 文件类
