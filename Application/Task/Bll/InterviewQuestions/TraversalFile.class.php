@@ -21,7 +21,7 @@ class TraversalFile
                     if ($file != '.' && $file != '..'){
                         $subFile = $dir.'/'.$file;
                         if (is_dir($subFile)){
-                            self::index($subFile,$file_array[$file]);
+                            self::index($subFile,$file_array);
                         }else{
                             $file_array[] = $subFile;
                         }

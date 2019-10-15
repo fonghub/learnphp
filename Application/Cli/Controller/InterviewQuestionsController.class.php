@@ -16,9 +16,9 @@ class InterviewQuestionsController extends Controller
         $dir = realpath("./Public");
         $output = [];
         //递归遍历
-//        TraversalFile::index($dir,$output);
+        TraversalFile::index($dir,$output);
         //不递归遍历
-        TraversalFile::scan($dir,$output);
+//        TraversalFile::scan($dir,$output);
         print_r($output);
     }
 
