@@ -2,7 +2,7 @@
 
 模块化学习PHP
 
-#### 一、Cli模块
+#### 一、Cli
 * SortingController 排序算法
     * 冒泡排序
     * 选择排序
@@ -21,8 +21,10 @@
     * 栈
     * 队列
     * 树
-    * 二叉树搜索
     * 堆
+    
+* SearchController 搜索&查找
+    * 二叉树搜索
     * 二分法查找
     
 * ProcessController 多进程
@@ -43,8 +45,11 @@
 * NSPController 命名空间
 
 * CryptController 加密
+    * 单项散列加密
+    * 对称加密
+    * 非对称加密
 
-#### 二、Home模块
+#### 二、Home
 * FileController 文件类
     * 读文件
     * 写文件
