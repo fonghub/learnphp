@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Task\Bll\DataStructure;
+namespace Task\Bll\Algorithm\Sorting;
 
 
 /*

@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Task\Bll\DataStructure;
+namespace Task\Bll\Algorithm\Search;
 
 /*
  * https://github.com/elarity/data-structure-php-clanguage/blob/master/10.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%88%E4%BA%8C%EF%BC%89.md
@@ -33,32 +31,41 @@ class SearchTree
         return $tree;
     }
 
-    public function preOrder($tree)
+    public static function preOrder($tree)
     {
         if ($tree instanceof SearchTree){
-            echo $tree->data." ";
-            $this->preOrder($tree->left);
-            $this->preOrder($tree->right);
+            $data = [$tree->data];
+            $left = self::preOrder($tree->left);
+            $right = self::preOrder($tree->right);
+            return array_merge($data,$left,$right);
+        }else{
+            return [];
         }
     }
 
 
-    public function minOrder($tree)
+    public static function minOrder($tree)
     {
         if ($tree instanceof SearchTree){
-            $this->minOrder($tree->left);
-            echo $tree->data." ";
-            $this->minOrder($tree->right);
+            $left = self::minOrder($tree->left);
+            $data = [$tree->data];
+            $right = self::minOrder($tree->right);
+            return array_merge($left,$data,$right);
+        }else{
+            return [];
         }
     }
 
 
-    public function subOrder($tree)
+    public static function subOrder($tree)
     {
         if ($tree instanceof SearchTree){
-            $this->subOrder($tree->left);
-            $this->subOrder($tree->right);
-            echo $tree->data." ";
+            $left = self::subOrder($tree->left);
+            $right = self::subOrder($tree->right);
+            $data = [$tree->data];
+            return array_merge($left,$right,$data);
+        }else{
+            return [];
         }
     }
 

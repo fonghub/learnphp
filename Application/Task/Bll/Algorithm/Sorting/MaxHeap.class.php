@@ -1,13 +1,10 @@
 <?php
-
-
-namespace Task\Bll\DataStructure;
-
+namespace Task\Bll\Algorithm\Sorting;
 
 /*
  * https://www.jianshu.com/p/6b526aa481b1
  */
-class MaxHeap1
+class MaxHeap
 {
 
     public $size = 0;

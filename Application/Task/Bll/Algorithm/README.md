@@ -1,4 +1,4 @@
-### 学习数据结构
+### 学习排序算法
 
 ### 参考
 *  [elarity](https://github.com/elarity/data-structure-php-clanguage)  

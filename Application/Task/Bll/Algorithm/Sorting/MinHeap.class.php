@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Task\Bll\Ds;
+namespace Task\Bll\Algorithm\Sorting;
 
 
 class MinHeap

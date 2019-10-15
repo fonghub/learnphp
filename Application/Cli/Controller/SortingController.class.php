@@ -1,16 +1,15 @@
 <?php
-
-
 namespace Cli\Controller;
 
 
-use Task\Bll\DataStructure\Bubble;
-use Task\Bll\DataStructure\Insert;
-use Task\Bll\DataStructure\MaxHeap1;
-use Task\Bll\DataStructure\Quick;
-use Task\Bll\DataStructure\SearchTree;
-use Task\Bll\DataStructure\Select;
-use Task\Bll\DataStructure\MergeSort;
+
+use Task\Bll\Algorithm\Sorting\Bubble;
+use Task\Bll\Algorithm\Sorting\Insert;
+use Task\Bll\Algorithm\Sorting\MaxHeap;
+use Task\Bll\Algorithm\Sorting\MergeSort;
+use Task\Bll\Algorithm\Sorting\Quick;
+use Task\Bll\Algorithm\Sorting\Select;
+use Task\Bll\Algorithm\Sorting\Tree;
 use Think\Controller;
 /*
  * 排序类
@@ -37,7 +36,7 @@ class SortingController extends Controller
      */
     public function bubble()
     {
-        $this->res = Bubble::index1($this->arr);
+        $this->res = Bubble::index($this->arr);
     }
 
     /*
@@ -62,12 +61,11 @@ class SortingController extends Controller
     public function tree()
     {
         $data = array_shift($this->arr);
-        $tree = new SearchTree($data);
+        $tree = new Tree($data);
         foreach ($this->arr as $value){
-            SearchTree::insert($tree,new SearchTree($value));
+            Tree::insert($tree,new Tree($value));
         }
-        $tree->minOrder($tree);
-        echo "\n";
+        $this->res = $tree->minOrder($tree);
     }
 
     /*
@@ -75,7 +73,7 @@ class SortingController extends Controller
      */
     public function heap()
     {
-        $mh1 = new MaxHeap1($this->arr);
+        $mh1 = new MaxHeap($this->arr);
         $this->res = $mh1->sort();
         $this->res = array_reverse($this->res);
     }

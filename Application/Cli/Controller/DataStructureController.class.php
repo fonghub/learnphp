@@ -4,17 +4,13 @@
 namespace Cli\Controller;
 
 
-use Task\Bll\DataStructure\BS;
 use Task\Bll\DataStructure\Index;
 use Task\Bll\DataStructure\Linear;
 use Task\Bll\DataStructure\Linked;
 use Task\Bll\DataStructure\MaxHeap;
-use Task\Bll\DataStructure\MaxHeap1;
 use Task\Bll\DataStructure\Queue;
-use Task\Bll\DataStructure\SearchTree;
 use Task\Bll\DataStructure\Stack;
 use Task\Bll\DataStructure\Tree;
-use Task\Bll\DataStructure\viewTree;
 use Think\Controller;
 /*
  * 数据结构
@@ -144,34 +140,13 @@ class DataStructureController extends Controller
         $max = MaxHeap::array2max(array(50, 10, 90, 30, 70, 40, 80, 60, 20));
         print_r($max->element);
         echo $max->size;
-//        $max->insert(5);
-//        print_r($max->element);
-//        $max->delete();
-//        print_r($max->element);
+        $max->insert(5);
+        print_r($max->element);
+        $max->delete();
+        print_r($max->element);
     }
 
-    public function heap1()
-    {
-        $arr = array(50, 10, 90, 30, 70, 40, 80, 60, 20);
-        $mh1 = new MaxHeap1($arr);
-        print_r($mh1->getElement());
-        $mh1->insert(75);
-        echo "insert=75\n";
-        print_r($mh1->getElement());
-        echo 'get='.$mh1->get()."\n";
-        print_r($mh1->getElement());
-    }
 
-    /*
-     * 二分查找
-     */
-    public function BS($data)
-    {
-        $arr = [1,3,5,7,9,11,13];
-        $bs = new BS($arr);
-        $res = $bs->find($data);
-        echo "查找{$data}，结果为：{$res}\n";
-    }
 
     /*
      * 产生索引

@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Task\Bll\Ds;
+namespace Task\Bll\Algorithm\Sorting;
 
 
 class Tree
@@ -16,33 +14,33 @@ class Tree
         $this->data = $data;
     }
 
-    public function insert(Tree $tree, Tree $node)
+    public static function insert(Tree $tree, Tree $node)
     {
         if ($tree->data > $node->data) {
 
             if ($tree->left instanceof Tree) {
-                $this->insert($tree->left,$node);
+                self::insert($tree->left,$node);
             } else {
-                $this->setLeft($tree,$node);
+                self::setLeft($tree,$node);
             }
         } elseif ($tree->data < $node->data) {
 
             if ($tree->right instanceof Tree) {
-                $this->insert($tree->right,$node);
+                self::insert($tree->right,$node);
             } else {
-                $this->setRight($tree,$node);
+                self::setRight($tree,$node);
             }
         }
     }
 
 
-    public function setLeft(Tree $tree, Tree $node)
+    public static function setLeft(Tree $tree, Tree $node)
     {
         $node->parent = $tree;
         $tree->left = $node;
     }
 
-    public function setRight(Tree $tree, Tree $node)
+    public static function setRight(Tree $tree, Tree $node)
     {
         $node->parent = $tree;
         $tree->right = $node;
@@ -51,12 +49,12 @@ class Tree
     public function minOrder($tree)
     {
         if ($tree instanceof Tree){
-            $this->minOrder($tree->left);
-            echo  $tree->data."\t";
-//            $data = $tree->data."\n";
-            $this->minOrder($tree->right);
-
-//            return array_merge($this->minOrder($tree->left),array($data),$this->minOrder($tree->right));
+            $left = $this->minOrder($tree->left);
+            $mid =  [$tree->data];
+            $right = $this->minOrder($tree->right);
+            return array_merge($left,$mid,$right);
+        }else{
+            return [];
         }
 
     }

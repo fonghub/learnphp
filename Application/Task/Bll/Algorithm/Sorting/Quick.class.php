@@ -1,8 +1,5 @@
 <?php
-
-
-namespace Task\Bll\DataStructure;
-
+namespace Task\Bll\Algorithm\Sorting;
 
 /*
  * https://github.com/elarity/data-structure-php-clanguage/blob/master/14.%E6%8E%92%E5%BA%8F%E7%AF%87%E4%B9%8B%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%85%A5%E9%97%A8%E7%AF%87.md

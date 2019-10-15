@@ -1,6 +1,6 @@
 <?php
-namespace Task\Bll\DataStructure;
- class MergeSort
+namespace Task\Bll\Algorithm\Sorting;
+class MergeSort
  {
      public static function sort(array $arr): array
      {
