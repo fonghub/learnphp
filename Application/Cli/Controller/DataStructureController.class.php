@@ -62,19 +62,38 @@ class DataStructureController extends Controller
         $seqList->initList($list);
         foreach($arr as $k => $v){
             $seqList->listInsert($list, $k+1, $v);
-        }print_r($list);
-        $res = $seqList->getElem($list,6,$num);
-        if($res)
-            echo $num;
-        else
-            echo 'error';
-        echo "\n";
+        }
+        // $res = $seqList->getElem($list,6,$num);
+        // if($res)
+        //     echo $num;
+        // else
+        //     echo 'error';
+        // echo "\n";
         $result = $seqList->dispList($list);
         print_r($result);
         $seqList->destroyList($list);
         $length = $seqList->listLength($list);
         echo $length;
         echo "\n";
+        $result = $seqList->dispList($list);
+        print_r($result);
+    }
+
+    /**
+     * 删除顺序表中所有值为$e的数据元素
+     */
+    public function copyLine()
+    {
+        $list = null;
+        $arr = [1,8,8,1,4,0,0,0,0,6,1];
+        $seqList = new \Task\Bll\DataStructure\SeqList();
+        $seqList->initList($list);
+        foreach($arr as $k => $v){
+            $seqList->listInsert($list, $k+1, $v);
+        }
+        $result = $seqList->dispList($list);
+        print_r($result);
+        $seqList->deduplication($list,1);
         $result = $seqList->dispList($list);
         print_r($result);
     }

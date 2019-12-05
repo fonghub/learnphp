@@ -12,7 +12,7 @@ class SeqList
     public function initList(&$L)
     {
         $L = new Seq();
-    } 
+    }
     
     /**
      * 销毁顺序表L
@@ -20,7 +20,7 @@ class SeqList
     public function destroyList(&$L)
     {
         $L = null;
-    } 
+    }
     
     /**
      * 若L为空表，则返回真，否则返回假
@@ -52,7 +52,11 @@ class SeqList
     {
         if($this->ListEmpty($L))
             return [];
-        return $L->arr;
+        $arr = [];
+        for($i = 0; $i < $L->length; $i++){
+            $arr[] = $L->arr[$i];
+        }
+        return $arr;
     }
     
     /**
@@ -68,14 +72,15 @@ class SeqList
     }
     
     /**
-     * 查找元素索引序号
+     * 查找元素索引/序号
      * 返回顺序表L中第1个与e相等的序号，找不到返回0
      */
     public function locateElem($L,$e)
     {
-        foreach($L->arr as $k => $v){
-            if($v == $e)
-                return $k+1;
+        //根据length来确定数据的个数
+        for($i = 0; $i < $L->length; $i++){
+            if($L->arr[$i] == $e)
+                return $i+1;
         }
         return 0;
     }
@@ -114,6 +119,20 @@ class SeqList
         }
         $L->length--;
         return true;
+    }
+
+    /**
+     * 删除顺序表中所有值为$e的数据元素
+     */
+    public function deduplication(&$L,$e)
+    {
+        $i = 0;
+        for($j = 0; $j < $L->length; $j++){
+            if($L->arr[$j] != $e){
+                $L->arr[$i++] = $L->arr[$j];
+            }
+        }
+        $L->length = $i;
     }
 
 }
