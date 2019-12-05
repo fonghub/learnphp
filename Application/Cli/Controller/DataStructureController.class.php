@@ -51,6 +51,34 @@ class DataStructureController extends Controller
 
     }
 
+    /**
+     * 顺序表
+     */
+    public function seqList()
+    {
+        $list = null;
+        $arr = [1,8,8,1,4,0,0,0,0,6,1];
+        $seqList = new \Task\Bll\DataStructure\SeqList();
+        $seqList->initList($list);
+        foreach($arr as $k => $v){
+            $seqList->listInsert($list, $k+1, $v);
+        }print_r($list);
+        $res = $seqList->getElem($list,6,$num);
+        if($res)
+            echo $num;
+        else
+            echo 'error';
+        echo "\n";
+        $result = $seqList->dispList($list);
+        print_r($result);
+        $seqList->destroyList($list);
+        $length = $seqList->listLength($list);
+        echo $length;
+        echo "\n";
+        $result = $seqList->dispList($list);
+        print_r($result);
+    }
+
     public function linked()
     {
         $link = new Linked();
