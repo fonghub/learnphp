@@ -79,6 +79,17 @@ class DataStructureController extends Controller
         print_r($result);
     }
 
+
+    public function linkList()
+    {
+        $list = null;
+        $arr = [1,8,8,1,4,0,0,0,0,6,1];
+        $linkList = new \Task\Bll\DataStructure\LinkList();
+        // $linkList->createListL($list,$arr);
+        $linkList->createListR($list,$arr);
+        print_r($list);
+    }
+
     /**
      * 删除顺序表中所有值为$e的数据元素
      */
