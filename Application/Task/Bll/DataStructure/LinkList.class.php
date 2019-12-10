@@ -19,7 +19,14 @@ class LinkList
      */
     public function destroyList(&$L)
     {
-        $L = null;
+        $pre = $L;
+        $p = $L->next;
+        while ($p != null) {
+            unset($pre);
+            $pre = $p;
+            $p = $p->next;
+        }
+        unset($pre);
     }
     
     /**
@@ -27,7 +34,7 @@ class LinkList
      */
     public function listEmpty($L)
     {
-        
+        return ($L->next == null);
     }
     
     /**
@@ -36,7 +43,13 @@ class LinkList
      */
     public function listLength($L)
     {
-        
+        $length = 0;
+        $pre = $L->next;
+        while ($pre != null) {
+            $length++;
+            $pre = $pre->next;
+        }
+        return $length;
     }
     
     /**
@@ -45,7 +58,12 @@ class LinkList
      */
     public function dispList($L)
     {
-        
+        $pre = $L->next;
+        while ($pre != null) {
+            echo $pre->data."\t";
+            $pre = $pre->next;
+        }
+        echo "\n";
     }
     
     /**
@@ -54,7 +72,19 @@ class LinkList
      */
     public function getElem($L,$i,&$e)
     {
-        
+        $j = 1;
+        $pre = $L->next;
+        while ($pre != null && $j < $i) {
+            $j++;
+            $pre = $pre->next;
+        }
+
+        if ($pre == null) {
+            return false;
+        }else{
+            $e = $pre->data;
+        }
+        return true;
     }
     
     /**
