@@ -93,7 +93,18 @@ class LinkList
      */
     public function locateElem($L,$e)
     {
-        
+        $pre = $L->next;
+        $j = 1;
+        while ($pre != null) {
+            if ($pre->data == $e) {
+                return $j;
+            }
+            $j++;
+            $pre = $pre->next;
+        }
+        if ($pre == null) {
+            return 0;
+        }
     }
     
     /**
@@ -102,7 +113,21 @@ class LinkList
      */
     public function listInsert(&$L, $i, $e)
     {
-        
+        $j = 0;
+        $p = $L;
+        while ($j < $i - 1 && $p != null) {
+            $p = $p->next;
+            $j++;
+        }
+
+        if ($p == null) {
+            return false;
+        }
+        $s = new Node();
+        $s->data = $e;
+        $s->next = $p->next;
+        $p->next = $s;
+        return true;
     }
     
     /**
@@ -111,7 +136,21 @@ class LinkList
      */
     public function listDelete(&$L, $i, &$e)
     {
-        
+        $p = $L;
+        $j = 0;
+        while ($j < $i - 1 && $p != null) {
+            $p = $p->next;
+            $j++;
+        }
+        if ($p == null) {
+            return false;
+        }
+
+        $s = $p->next;
+        $p->next = $s->next;
+        $e = $s->data;
+        unset($s);
+        return true;
     }
 
     /**
@@ -119,7 +158,19 @@ class LinkList
      */
     public function deduplication(&$L,$e)
     {
-        
+        $p = $L;
+        $q = $L->next;
+        while ($q != null) {
+            if ($q->data == $e) {
+                $s = $q;
+                $q = $q->next;
+                unset($s);
+            }else{
+                $p->next = $q;
+                $p = $q;
+                $q = $q->next;
+            }
+        }
     }
 
     /**
