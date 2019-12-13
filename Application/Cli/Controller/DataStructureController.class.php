@@ -87,7 +87,18 @@ class DataStructureController extends Controller
         $linkList = new \Task\Bll\DataStructure\LinkList();
         // $linkList->createListL($list,$arr);
         $linkList->createListR($list,$arr);
-        print_r($list);
+        $linkList->dispList($list);
+        // print_r($list);
+        echo "list length = ".$linkList->listLength($list)."\n";
+        $linkList->getElem($list,5,$e);
+        echo "5th index elem is ".$e."\n";
+        echo "the index of (elem = 4) = ".$linkList->locateElem($list,4)."\n";
+        $linkList->listInsert($list,7,9);
+        echo "insert a new (elem = 9) in 7th index\n";
+        $linkList->dispList($list);
+        $linkList->listDelete($list,11,$e);
+        echo "delete elem in 11th index {$e}\n";
+        $linkList->dispList($list);
     }
 
     /**
