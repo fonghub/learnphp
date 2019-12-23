@@ -51,7 +51,6 @@ class DataStructureController extends Controller
 
     }
 
-
     public function linked()
     {
         $link = new Linked();
