@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Task\Bll\DataStructure;
+namespace Task\Bll\Ds;
 
-class LinkList
+class DlinkList
 {
 
     /**
-     * 初始化单链表L
+     * 初始化双向链表L
      */
     public function initList(&$L)
     {
@@ -15,7 +15,7 @@ class LinkList
     }
     
     /**
-     * 销毁单链表L
+     * 销毁双向链表L
      */
     public function destroyList(&$L)
     {
@@ -38,7 +38,7 @@ class LinkList
     }
     
     /**
-     * 单链表L不为空时，显示L的长度
+     * 双向链表L不为空时，显示L的长度
      * 为空时，显示0
      */
     public function listLength($L)
@@ -53,7 +53,7 @@ class LinkList
     }
     
     /**
-     * 当单链表L不为空时，顺序显示L中各节点的值域
+     * 当双向链表L不为空时，顺序显示L中各节点的值域
      * 为空时，显示空数组
      */
     public function dispList($L)
@@ -67,7 +67,7 @@ class LinkList
     }
     
     /**
-     * 求单链表L中指定位置的某个数据元素
+     * 求双向链表L中指定位置的某个数据元素
      * 用e返回L中第 i 个元素的值
      */
     public function getElem($L,$i,&$e)
@@ -89,7 +89,7 @@ class LinkList
     
     /**
      * 查找元素索引/序号
-     * 返回单链表L中第1个与e相等的序号，找不到返回0
+     * 返回双向链表L中第1个与e相等的序号，找不到返回0
      */
     public function locateElem($L,$e)
     {
@@ -109,7 +109,7 @@ class LinkList
     
     /**
      * 插入元素
-     * 在单链表L中的第i个位置插入元素e
+     * 在双向链表L中的第i个位置插入元素e
      */
     public function listInsert(&$L, $i, $e)
     {
@@ -126,13 +126,17 @@ class LinkList
         $s = new Node();
         $s->data = $e;
         $s->next = $p->next;
+        if ($p->next != null) {
+            $p->next->pre = $s;
+        }
+        $s->pre = $p;
         $p->next = $s;
         return true;
     }
     
     /**
      * 删除元素
-     * 在单链表L中删除第i个元素，由e返回删除的值；
+     * 在双向链表L中删除第i个元素，由e返回删除的值；
      */
     public function listDelete(&$L, $i, &$e)
     {
@@ -148,33 +152,34 @@ class LinkList
 
         $s = $p->next;
         $p->next = $s->next;
+        $s->next->pre = $p;
         $e = $s->data;
         unset($s);
         return true;
     }
 
     /**
-     * 删除单链表中所有值为$e的数据元素
+     * 删除双向链表中所有值为$e的数据元素
      */
-    public function deduplication(&$L,$e)
-    {
-        $p = $L;
-        $q = $L->next;
-        while ($q != null) {
-            if ($q->data == $e) {
-                $s = $q;
-                $q = $q->next;
-                unset($s);
-            }else{
-                $p->next = $q;
-                $p = $q;
-                $q = $q->next;
-            }
-        }
-    }
+    // public function deduplication(&$L,$e)
+    // {
+    //     $p = $L;
+    //     $q = $L->next;
+    //     while ($q != null) {
+    //         if ($q->data == $e) {
+    //             $s = $q;
+    //             $q = $q->next;
+    //             unset($s);
+    //         }else{
+    //             $p->next = $q;
+    //             $p = $q;
+    //             $q = $q->next;
+    //         }
+    //     }
+    // }
 
     /**
-     * 创建单链表-头插法
+     * 创建双向链表-头插法
      */
     public function createListL(&$L,$arr)
     {
@@ -183,12 +188,16 @@ class LinkList
             $s = new Node();
             $s->data = $v;
             $s->next = $L->next;
+            if ($L->next != null) {
+                $L->next->pres = $s;
+            }
+            $s->pres = $L;
             $L->next = $s;            
         }
     }
 
     /**
-     * 创建单链表-尾插法
+     * 创建双向链表-尾插法
      */
     public function createListR(&$L,$arr)
     {
@@ -198,6 +207,7 @@ class LinkList
             $s = new Node();
             $s->data = $v;
             $r->next = $s;
+            $s->pre = $r;
 
             $r = $s;
         }
@@ -211,5 +221,6 @@ class LinkList
 class Node
 {
     public $data = null;
+    public $pre = null;
     public $next = null;
 }

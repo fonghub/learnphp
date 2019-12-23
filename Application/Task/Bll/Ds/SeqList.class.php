@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Task\Bll\DataStructure;
+namespace Task\Bll\Ds;
 
 class SeqList
 {
