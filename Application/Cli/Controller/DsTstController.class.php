@@ -121,6 +121,55 @@ class DsTstcontroller extends Controller
         $lnk->dispStack($s);
         echo "\n";
     }
+
+
+    public function seqQueue()
+    {
+        $q = null;
+        $arr = [1,8,8,1,4];
+        $length = count($arr);
+        $seqQueue = new \Task\Bll\Ds\SeqQueue();
+        $seqQueue->initQueue($q,$length);
+        for($i=0;$i<$length;$i++){
+            $seqQueue->enQueue($q,$arr[$i]);
+        }
+        print_r($q);
+        for($i=0;$i<$length;$i++){
+            if($seqQueue->deQueue($q,$e))
+                echo $e."\t";
+        }
+        echo "\n";
+        print_r($q);
+        echo "\n";
+        for($i=0;$i<$length;$i++){
+            $seqQueue->enQueue($q,$arr[$i]);
+        }
+        print_r($q);
+    }
+
+    public function cirQueue()
+    {
+        $q = null;
+        $arr = [1,8,8,1,4];
+        $length = count($arr);
+        $cirQueue = new \Task\Bll\Ds\CircularQueue();
+        $cirQueue->initQueue($q,$length);
+        for($i=0;$i<$length;$i++){
+            $cirQueue->enQueue($q,$arr[$i]);
+        }
+        print_r($q);
+        for($i=0;$i<$length;$i++){
+            if($cirQueue->deQueue($q,$e))
+                echo $e."\t";
+        }
+        echo "\n";
+        print_r($q);
+        echo "\n";
+        for($i=0;$i<$length;$i++){
+            $cirQueue->enQueue($q,$arr[$i]);
+        }
+        print_r($q);
+    }
 }
 
 ?>
