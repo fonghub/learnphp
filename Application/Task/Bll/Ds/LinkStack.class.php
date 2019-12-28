@@ -10,24 +10,26 @@ class LinkStack
     /**
      * 初始化栈
      */
-    public function initStack(&$s,$length)
+    public function initStack(&$s)
     {
-        $s = new Node();
+        $s = new Stack();
     }
 
     /**
      * 销毁栈
      */
-    public function DestroyStack(&$s)
+    public function destroyStack(&$s)
     {
-        $pre = $s;
-        $top = $s->next;
-        while ($top != null) {
+        if($s->top != null){
+            $pre = $s->top;
+            $p = $pre->next;
+            while($p != null){
+                unset($pre);
+                $pre = $p;
+                $p = $p->next;
+            }
             unset($pre);
-            $pre = $top;
-            $top = $top->next;
         }
-        unset($pre);
     }
 
     /**
@@ -35,10 +37,16 @@ class LinkStack
      */
     public function push(&$s,$e)
     {
-        $top = new Node();
-        $top->data = $e;
-        $top->next = $s->next;
-        $s->next = $top;
+        $node = new Node();
+        $node->data = $e;
+        if($this->stackEnpty($s)){
+            $s->top = $node;
+        }else{
+            $node->next = $s->top;
+            $s->top = $node;
+        }
+        $s->length++;
+        return true;
     }
 
     /**
@@ -49,22 +57,23 @@ class LinkStack
         if($this->stackEnpty($s)){
             return false;
         }
-        $top = $s->next;
-        $e = $top->data;
-        $s->next = $top->next;
-        unset($top);
+        $outer = $s->top;
+        $e = $outer->data;
+        $s->top = $outer->next;
+        $s->length--;
+        unset($outer);
         return true;
     }
 
     /**
      * 获取栈顶元素
      */
-    public function getTop(&$s,&$e)
+    public function getTop($s,&$e)
     {
         if($this->stackEnpty($s)){
             return false;
         }
-        $e = $s->next->data;
+        $e = $s->top->data;
         return true;
     }
 
@@ -73,17 +82,16 @@ class LinkStack
      */
     public function stackEnpty($s)
     {
-        return ($s->next == null);
+        return ($s->top == null);
     }
 
     public function dispStack($s)
     {
-        $top = $s;
-        while ($top->next != null) {
-            $top = $top->next;
+        $top = $s->top;
+        while ($top != null) {
             echo $top->data."\t";
+            $top = $top->next;
         }
-        echo "\n";
     }
 
     /**
@@ -91,13 +99,7 @@ class LinkStack
      */
     public function stackLength($s)
     {
-        $i = 0;
-        $top = $s;
-        while ($top->next != null) {
-            $i++;
-            $top = $top->next;
-        }
-        return $i;
+        return $s->length;
     }
 }
 
@@ -109,6 +111,15 @@ class Node
 {
     public $data = null;
     public $next = null;
+}
+
+/**
+ * 栈
+ */
+class Stack
+{
+    public $top = null;
+    public $length = 0;
 }
 
 ?>

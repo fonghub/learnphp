@@ -92,26 +92,27 @@ class DsTstcontroller extends Controller
     }
 
 
-    public function LinkStack()
+    public function linkStack()
     {
         $s = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
         $length = count($arr);
         $lnk = new \Task\Bll\Ds\LinkStack();
+        $lnk->initStack($s);
         echo "push stack: ";
         for($i=0;$i<$length;$i++){
             $lnk->push($s,$arr[$i]);
             echo $arr[$i]."\t";
         }
         echo "\n";
+        print_r($s);
+        echo "\n";
         echo "dispStack:";
         $lnk->dispStack($s);
         echo "\n";
-        
         $lnk->getTop($s,$e);
         echo "getTop:".$e;
         echo "\n";
-
         while ($lnk->pop($s,$e)) {
             echo $e."\t";
         }
