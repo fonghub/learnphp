@@ -171,6 +171,29 @@ class DsTstcontroller extends Controller
         }
         print_r($q);
     }
+
+    public function linkQueue()
+    {
+        $q = null;
+        $arr = [1,8,8,1,4,0,0,0,0,6,1];
+        $length = count($arr);
+        $lnk = new \Task\Bll\Ds\LinkQueue();
+        $lnk->initQueue($q);
+        print_r($q);
+        echo "\n";
+        for($i=0;$i<$length;$i++){
+            $lnk->enQueue($q,$arr[$i]);
+        }
+        print_r($q);
+        echo "\n";
+        for($i=0;$i<$length;$i++){
+            if($lnk->deQueue($q,$e))
+            echo $e."\t";
+        }
+        echo "\n";
+        print_r($q);
+        echo "\n";
+    }
 }
 
 ?>
