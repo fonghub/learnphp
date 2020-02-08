@@ -1,5 +1,5 @@
 <?php
-namespace Task\Bll\Ds;
+namespace Task\Bll\Ds\Queue;
 
 /**
  * 循环队列

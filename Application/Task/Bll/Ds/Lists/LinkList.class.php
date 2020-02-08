@@ -1,7 +1,5 @@
 <?php
-
-
-namespace Task\Bll\Ds;
+namespace Task\Bll\Ds\Lists;
 
 class LinkList
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Task\Bll\Ds;
+namespace Task\Bll\Ds\Stack;
 
 class SeqStack
 {

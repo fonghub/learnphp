@@ -17,7 +17,7 @@ class DsTstcontroller extends Controller
     {
         $list = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
-        $seqList = new \Task\Bll\Ds\SeqList();
+        $seqList = new \Task\Bll\Ds\Lists\Lists\SeqList();
         $seqList->initList($list);
         foreach($arr as $k => $v){
             $seqList->listInsert($list, $k+1, $v);
@@ -45,7 +45,7 @@ class DsTstcontroller extends Controller
     {
         $list = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
-        $linkList = new \Task\Bll\Ds\LinkList();
+        $linkList = new \Task\Bll\Ds\Lists\LinkList();
         // $linkList->createListL($list,$arr);
         $linkList->createListR($list,$arr);
         print_r($list);
@@ -75,7 +75,7 @@ class DsTstcontroller extends Controller
         $s = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
         $length = count($arr);
-        $seq = new \Task\Bll\Ds\SeqStack();
+        $seq = new \Task\Bll\Ds\Stack\SeqStack();
         $seq->initStack($s,$length);
         echo "push stack: ";
         for($i=0;$i<$length;$i++){
@@ -97,7 +97,7 @@ class DsTstcontroller extends Controller
         $s = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
         $length = count($arr);
-        $lnk = new \Task\Bll\Ds\LinkStack();
+        $lnk = new \Task\Bll\Ds\Stack\LinkStack();
         $lnk->initStack($s);
         echo "push stack: ";
         for($i=0;$i<$length;$i++){
@@ -129,7 +129,7 @@ class DsTstcontroller extends Controller
         $q = null;
         $arr = [1,8,8,1,4];
         $length = count($arr);
-        $seqQueue = new \Task\Bll\Ds\SeqQueue();
+        $seqQueue = new \Task\Bll\Ds\Queue\SeqQueue();
         $seqQueue->initQueue($q,$length);
         for($i=0;$i<$length;$i++){
             $seqQueue->enQueue($q,$arr[$i]);
@@ -153,7 +153,7 @@ class DsTstcontroller extends Controller
         $q = null;
         $arr = [1,8,8,1,4];
         $length = count($arr);
-        $cirQueue = new \Task\Bll\Ds\CircularQueue();
+        $cirQueue = new \Task\Bll\Ds\Queue\CircularQueue();
         $cirQueue->initQueue($q,$length);
         for($i=0;$i<$length;$i++){
             $cirQueue->enQueue($q,$arr[$i]);
@@ -177,7 +177,7 @@ class DsTstcontroller extends Controller
         $q = null;
         $arr = [1,8,8,1,4,0,0,0,0,6,1];
         $length = count($arr);
-        $lnk = new \Task\Bll\Ds\LinkQueue();
+        $lnk = new \Task\Bll\Ds\Queue\LinkQueue();
         $lnk->initQueue($q);
         print_r($q);
         echo "\n";
