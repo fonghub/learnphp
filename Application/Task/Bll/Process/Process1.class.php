@@ -15,24 +15,31 @@ class Process1
     public static function index()
     {
         // 一次fork
-        $pid = pcntl_fork();
-        if ( $pid < 0 ) {
+        $pid = posix_getpid();
+        $fpid = pcntl_fork();
+        if ( $fpid < 0 ) {
             exit( ' fork error. ' );
-        } else if( $pid > 0 ) {
-            exit( " parent process. pid={$pid}\n" );
+        } else if( $fpid > 0 ) {
+            //  父进程返回子进程id
+            exit( " parent process. pid={$pid} child pid={$fpid}\n" );
         }
+        //  以下为子进程
+        $pid = posix_getpid();
+        echo " child process. pid={$pid} parent pid=".posix_getppid()."\n";
         // 将当前子进程提升会会话组组长 这是至关重要的一步
         if ( ! posix_setsid() ) {
             exit( ' setsid error. ' );
         }
         // 二次fork
-        $pid = pcntl_fork();
-        if( $pid < 0 ){
+        $fpid = pcntl_fork();
+        if( $fpid < 0 ){
             exit( ' fork error. ' );
-        } else if( $pid > 0 ) {
-            exit( " parent process. pid={$pid}\n" );
+        } else if( $fpid > 0 ) {
+            exit( " parent process. pid={$pid} child pid={$fpid}\n" );
         }
-
+        //  以下为子进程
+        $pid = posix_getpid();
+        echo " child process. pid={$pid} parent pid=".posix_getppid()."\n";
         // 真正的逻辑代码们 下面仅仅写个循环以示例
         for( $i = 1 ; $i <= 10 ; $i++ ){
             sleep( 1 );

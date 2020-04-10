@@ -12,6 +12,7 @@ use Task\Bll\Process\Process3;
 use Task\Bll\Process\Process4;
 use Task\Bll\Process\Process6;
 use Task\Bll\Process\Process8;
+use Task\Bll\Process\Process8m;
 use Task\Bll\Process\Process9;
 use Task\Bll\Process\ProcessTst;
 
@@ -46,6 +47,16 @@ class ProcessController
     public function p8_index()
     {
         Process8::index1();
+    }
+
+    public function p8m_index($i=5)
+    {
+        $p8m = new Process8m($i);
+        // $p8m->run();
+    }
+    public function p8m_index_1($i=5)
+    {
+        Process8m::producer($i);
     }
 
     public function p9_index()
